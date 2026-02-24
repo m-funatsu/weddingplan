@@ -61,6 +61,11 @@ export type PrenupSectionId =
   | 'debts'
   | 'income'
   | 'property'
+  | 'housework'
+  | 'lifestyle'
+  | 'communication'
+  | 'family'
+  | 'career_life'
   | 'other';
 
 export interface PrenupItem {
@@ -142,6 +147,11 @@ export const PRENUP_SECTION_INFO: Record<PrenupSectionId, { label: string; label
   debts: { label: '負債の取り扱い', labelEn: 'Debt Management', icon: '💳' },
   income: { label: '収入・生活費', labelEn: 'Income & Living Expenses', icon: '💵' },
   property: { label: '不動産・大型資産', labelEn: 'Property & Major Assets', icon: '🏠' },
+  housework: { label: '家事・役割分担', labelEn: 'Household Chores & Roles', icon: '🧹' },
+  lifestyle: { label: '生活習慣・ライフスタイル', labelEn: 'Lifestyle & Habits', icon: '🌿' },
+  communication: { label: 'コミュニケーション・関係性', labelEn: 'Communication & Relationship', icon: '💬' },
+  family: { label: '家族・親族関係', labelEn: 'Family Relations', icon: '👨‍👩‍👧' },
+  career_life: { label: 'キャリア・人生設計', labelEn: 'Career & Life Planning', icon: '🎯' },
   other: { label: 'その他の取り決め', labelEn: 'Other Agreements', icon: '📝' },
 };
 

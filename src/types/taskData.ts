@@ -1955,6 +1955,161 @@ export const PRENUP_TEMPLATES: PrenupTemplate[] = [
     label: 'デジタル財産（ドメイン・アカウント）', labelEn: 'Digital Property',
     description: 'ドメイン名、オンラインアカウント等の管理', descriptionEn: 'Management of domain names, online accounts, etc.',
   },
+  // === HOUSEWORK 家事・役割分担 ===
+  {
+    id: 'prenup_housework_001', sectionId: 'housework',
+    label: '日常の家事分担', labelEn: 'Daily Chore Division',
+    description: '料理・洗濯・掃除・ゴミ出し等の基本的な家事の分担方法', descriptionEn: 'How to divide cooking, laundry, cleaning, trash, and other daily chores',
+  },
+  {
+    id: 'prenup_housework_002', sectionId: 'housework',
+    label: '料理の担当と食事の方針', labelEn: 'Cooking & Meal Planning',
+    description: '料理担当の分担と自炊・外食の頻度について', descriptionEn: 'Division of cooking duties and frequency of eating out vs home cooking',
+  },
+  {
+    id: 'prenup_housework_003', sectionId: 'housework',
+    label: '育児の役割分担', labelEn: 'Childcare Responsibilities',
+    description: '子供ができた場合の育児の分担方針（送迎・入浴・寝かしつけ等）', descriptionEn: 'Division of childcare duties (pickup/dropoff, bathing, bedtime, etc.)',
+  },
+  {
+    id: 'prenup_housework_004', sectionId: 'housework',
+    label: '家事の外注方針', labelEn: 'Outsourcing Housework',
+    description: '家事代行サービスやクリーニング等の利用方針', descriptionEn: 'Policy on using cleaning services, laundry services, etc.',
+  },
+  {
+    id: 'prenup_housework_005', sectionId: 'housework',
+    label: '不満が出た時の対処法', labelEn: 'Handling Chore Imbalance',
+    description: '家事負担に不満が出た場合の話し合い方法', descriptionEn: 'How to address complaints about unequal housework distribution',
+  },
+  {
+    id: 'prenup_housework_006', sectionId: 'housework',
+    label: '整理整頓のルール', labelEn: 'Organization & Tidiness Rules',
+    description: '共有スペースの整理ルールと個人スペースの尊重', descriptionEn: 'Rules for shared spaces and respect for personal spaces',
+  },
+  // === LIFESTYLE 生活習慣・ライフスタイル ===
+  {
+    id: 'prenup_lifestyle_001', sectionId: 'lifestyle',
+    label: '起床・就寝時間', labelEn: 'Sleep Schedule',
+    description: '生活リズムの違いへの対処（早起き・夜更かし等）', descriptionEn: 'Handling different sleep schedules (early bird vs night owl)',
+  },
+  {
+    id: 'prenup_lifestyle_002', sectionId: 'lifestyle',
+    label: '食事の好み・制限', labelEn: 'Dietary Preferences',
+    description: '食事の好み、アレルギー、ベジタリアン等への対応', descriptionEn: 'Handling dietary preferences, allergies, vegetarian/vegan choices',
+  },
+  {
+    id: 'prenup_lifestyle_003', sectionId: 'lifestyle',
+    label: '趣味・個人の時間', labelEn: 'Hobbies & Personal Time',
+    description: '個人の趣味活動に使う時間とお金のルール', descriptionEn: 'Rules for time and money spent on personal hobbies',
+  },
+  {
+    id: 'prenup_lifestyle_004', sectionId: 'lifestyle',
+    label: '友人・交友関係', labelEn: 'Friendships & Social Life',
+    description: '友人との付き合い方、飲み会の頻度等', descriptionEn: 'Frequency of social outings, boundaries with friends',
+  },
+  {
+    id: 'prenup_lifestyle_005', sectionId: 'lifestyle',
+    label: '健康管理・運動', labelEn: 'Health & Exercise',
+    description: '定期健診、運動習慣、健康に関する取り組み', descriptionEn: 'Regular checkups, exercise habits, health commitments',
+  },
+  {
+    id: 'prenup_lifestyle_006', sectionId: 'lifestyle',
+    label: '喫煙・飲酒のルール', labelEn: 'Smoking & Drinking Rules',
+    description: '喫煙・飲酒に関する合意事項', descriptionEn: 'Agreements about smoking and alcohol consumption',
+  },
+  {
+    id: 'prenup_lifestyle_007', sectionId: 'lifestyle',
+    label: '住む場所・引っ越し', labelEn: 'Where to Live',
+    description: '居住地の選定基準と将来の引っ越しに関する方針', descriptionEn: 'Criteria for choosing where to live and future relocation policy',
+  },
+  // === COMMUNICATION コミュニケーション・関係性 ===
+  {
+    id: 'prenup_comm_001', sectionId: 'communication',
+    label: 'ケンカ・衝突の解決ルール', labelEn: 'Conflict Resolution Rules',
+    description: '意見が衝突した時のルール（冷却期間、話し合い等）', descriptionEn: 'Rules when disagreements happen (cooling off period, discussion, etc.)',
+  },
+  {
+    id: 'prenup_comm_002', sectionId: 'communication',
+    label: '定期的な話し合いの場', labelEn: 'Regular Check-ins',
+    description: '夫婦で定期的に状況を確認し合う時間を設ける', descriptionEn: 'Schedule regular time for couple check-ins and discussions',
+  },
+  {
+    id: 'prenup_comm_003', sectionId: 'communication',
+    label: '感謝・愛情表現', labelEn: 'Expressing Gratitude & Love',
+    description: '日頃の感謝や愛情の伝え方について話し合う', descriptionEn: 'Discuss how to express gratitude and affection in daily life',
+  },
+  {
+    id: 'prenup_comm_004', sectionId: 'communication',
+    label: 'デートの頻度', labelEn: 'Date Night Frequency',
+    description: '二人の時間を定期的に確保する方針', descriptionEn: 'Policy for regularly scheduling couple time',
+  },
+  {
+    id: 'prenup_comm_005', sectionId: 'communication',
+    label: '記念日の過ごし方', labelEn: 'Anniversary Celebrations',
+    description: '結婚記念日や誕生日等の祝い方の方針', descriptionEn: 'How to celebrate anniversaries, birthdays, and special occasions',
+  },
+  {
+    id: 'prenup_comm_006', sectionId: 'communication',
+    label: '秘密と透明性の境界', labelEn: 'Privacy vs Transparency',
+    description: '個人のプライバシーと夫婦間の透明性のバランス', descriptionEn: 'Balance between personal privacy and marital transparency',
+  },
+  // === FAMILY 家族・親族関係 ===
+  {
+    id: 'prenup_family_001', sectionId: 'family',
+    label: '義家族との付き合い方', labelEn: 'In-Law Relationships',
+    description: 'お互いの家族との距離感と付き合い方', descriptionEn: 'How to manage relationships with each other\'s families',
+  },
+  {
+    id: 'prenup_family_002', sectionId: 'family',
+    label: '帰省の頻度', labelEn: 'Family Visit Frequency',
+    description: '実家への帰省頻度と過ごし方', descriptionEn: 'How often to visit families and how to spend the time',
+  },
+  {
+    id: 'prenup_family_003', sectionId: 'family',
+    label: '親の介護について', labelEn: 'Elder Care Planning',
+    description: '将来の親の介護に関する方針と費用の負担', descriptionEn: 'Policy and financial plan for caring for aging parents',
+  },
+  {
+    id: 'prenup_family_004', sectionId: 'family',
+    label: '子供の教育方針', labelEn: 'Children\'s Education',
+    description: '子供の教育方針（公立・私立、習い事等）', descriptionEn: 'Education policy (public/private school, extracurriculars)',
+  },
+  {
+    id: 'prenup_family_005', sectionId: 'family',
+    label: '子供の人数・タイミング', labelEn: 'Family Planning',
+    description: '子供を持つことへの考えと希望するタイミング', descriptionEn: 'Views on having children and desired timing',
+  },
+  {
+    id: 'prenup_family_006', sectionId: 'family',
+    label: '宗教・信仰', labelEn: 'Religion & Beliefs',
+    description: '宗教や信仰に関する方針と子供への教育', descriptionEn: 'Policy on religion, faith, and religious education for children',
+  },
+  // === CAREER_LIFE キャリア・人生設計 ===
+  {
+    id: 'prenup_career_001', sectionId: 'career_life',
+    label: '共働き vs 専業', labelEn: 'Dual Income vs Single Income',
+    description: '共働きか片方が家庭に入るかの方針', descriptionEn: 'Policy on both partners working or one staying home',
+  },
+  {
+    id: 'prenup_career_002', sectionId: 'career_life',
+    label: '転勤・海外赴任への対応', labelEn: 'Job Relocation Policy',
+    description: '転勤や海外赴任が発生した場合の対応方針', descriptionEn: 'How to handle job transfers or overseas assignments',
+  },
+  {
+    id: 'prenup_career_003', sectionId: 'career_life',
+    label: '起業・副業の方針', labelEn: 'Entrepreneurship & Side Jobs',
+    description: '起業や副業を始める場合の合意事項', descriptionEn: 'Agreements when starting a business or side job',
+  },
+  {
+    id: 'prenup_career_004', sectionId: 'career_life',
+    label: 'リタイア計画', labelEn: 'Retirement Planning',
+    description: '何歳でリタイアしたいか、老後の過ごし方', descriptionEn: 'Target retirement age and how to spend retirement',
+  },
+  {
+    id: 'prenup_career_005', sectionId: 'career_life',
+    label: 'スキルアップ・学び直し', labelEn: 'Continued Education',
+    description: '資格取得や大学院進学等のスキルアップ支援', descriptionEn: 'Support for certifications, graduate school, skill development',
+  },
   // === OTHER その他の取り決め ===
   {
     id: 'prenup_other_001', sectionId: 'other',

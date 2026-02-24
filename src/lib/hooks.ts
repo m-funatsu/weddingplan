@@ -10,6 +10,8 @@ import {
   getPrenupItems,
   savePrenupItems,
   updatePrenupItem as storageUpdatePrenupItem,
+  addPrenupItem as storageAddPrenupItem,
+  deletePrenupItem as storageDeletePrenupItem,
   getSettings,
   saveSettings,
   initializeTasksFromTemplates,
@@ -150,6 +152,31 @@ export function usePrenupItems() {
     []
   );
 
+  const addItem = useCallback(
+    (sectionId: PrenupItem["sectionId"], label: string, description: string = "") => {
+      const newItem: PrenupItem = {
+        id: crypto.randomUUID(),
+        sectionId,
+        label,
+        description,
+        completed: false,
+        notes: "",
+      };
+      storageAddPrenupItem(newItem);
+      setItems(getPrenupItems());
+      return newItem;
+    },
+    []
+  );
+
+  const deleteItem = useCallback(
+    (id: string) => {
+      storageDeletePrenupItem(id);
+      setItems(getPrenupItems());
+    },
+    []
+  );
+
   const resetItems = useCallback(() => {
     const settings = getSettings();
     const fresh = initializePrenupFromTemplates(PRENUP_TEMPLATES, settings.language);
@@ -161,6 +188,8 @@ export function usePrenupItems() {
     items,
     isLoaded,
     updateItem,
+    addItem,
+    deleteItem,
     resetItems,
   };
 }

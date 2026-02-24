@@ -316,6 +316,20 @@ export function updatePrenupItem(
   return items[index];
 }
 
+export function addPrenupItem(item: PrenupItem): void {
+  const items = getPrenupItems();
+  items.push(item);
+  savePrenupItems(items);
+}
+
+export function deletePrenupItem(id: string): boolean {
+  const items = getPrenupItems();
+  const filtered = items.filter((item) => item.id !== id);
+  if (filtered.length === items.length) return false;
+  savePrenupItems(filtered);
+  return true;
+}
+
 // --- localStorage Settings ---
 
 export function getSettings(): WeddingSettings {

@@ -58,7 +58,7 @@ CREATE POLICY "Users can delete own tasks"
 CREATE TABLE IF NOT EXISTS weddingplan_prenup_items (
   id TEXT PRIMARY KEY,
   user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
-  section_id TEXT NOT NULL CHECK (section_id IN ('assets', 'debts', 'income', 'property', 'other')),
+  section_id TEXT NOT NULL CHECK (section_id IN ('assets', 'debts', 'income', 'property', 'housework', 'lifestyle', 'communication', 'family', 'career_life', 'other')),
   label TEXT NOT NULL,
   description TEXT NOT NULL DEFAULT '',
   completed BOOLEAN NOT NULL DEFAULT false,

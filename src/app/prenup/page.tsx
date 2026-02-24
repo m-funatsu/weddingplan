@@ -7,6 +7,11 @@ import PrenupSection from "@/components/PrenupSection";
 import ProgressRing from "@/components/ProgressRing";
 
 const SECTION_ORDER: PrenupSectionId[] = [
+  "housework",
+  "lifestyle",
+  "communication",
+  "family",
+  "career_life",
   "assets",
   "debts",
   "income",
@@ -16,7 +21,7 @@ const SECTION_ORDER: PrenupSectionId[] = [
 
 export default function PrenupPage() {
   const { settings } = useWeddingSettings();
-  const { items, isLoaded, updateItem } = usePrenupItems();
+  const { items, isLoaded, updateItem, addItem, deleteItem } = usePrenupItems();
   const isJa = settings.language === "ja";
 
   const completedCount = items.filter((i) => i.completed).length;
@@ -28,6 +33,11 @@ export default function PrenupPage() {
       debts: [],
       income: [],
       property: [],
+      housework: [],
+      lifestyle: [],
+      communication: [],
+      family: [],
+      career_life: [],
       other: [],
     };
     items.forEach((item) => {
@@ -47,6 +57,14 @@ export default function PrenupPage() {
 
   function handleNotesChange(itemId: string, notes: string) {
     updateItem(itemId, { notes });
+  }
+
+  function handleAddItem(sectionId: PrenupSectionId, label: string) {
+    addItem(sectionId, label);
+  }
+
+  function handleDeleteItem(itemId: string) {
+    deleteItem(itemId);
   }
 
   if (!isLoaded) {
@@ -85,8 +103,8 @@ export default function PrenupPage() {
           <p className="text-sm text-amber-800">
             💡{" "}
             {isJa
-              ? "このチェックリストは法的な婚前契約書ではありません。パートナーとの話し合いのガイドとしてご活用ください。正式な契約書の作成には、弁護士にご相談ください。"
-              : "This checklist is not a legal prenuptial agreement. Use it as a guide for discussions with your partner. Consult a lawyer for formal agreements."}
+              ? "このチェックリストは法的な婚前契約書ではありません。パートナーとの話し合いのガイドとしてご活用ください。各セクションに自由に項目を追加できます。"
+              : "This checklist is not a legal prenuptial agreement. Use it as a guide for discussions with your partner. You can freely add custom items to each section."}
           </p>
         </div>
 
@@ -94,7 +112,7 @@ export default function PrenupPage() {
         <div className="space-y-4">
           {SECTION_ORDER.map((sectionId) => {
             const sectionItems = itemsBySection[sectionId];
-            if (sectionItems.length === 0) return null;
+            if (sectionItems.length === 0 && !addItem) return null;
             return (
               <PrenupSection
                 key={sectionId}
@@ -103,6 +121,8 @@ export default function PrenupPage() {
                 language={settings.language}
                 onToggle={handleToggle}
                 onNotesChange={handleNotesChange}
+                onAddItem={handleAddItem}
+                onDeleteItem={handleDeleteItem}
               />
             );
           })}
@@ -116,6 +136,7 @@ export default function PrenupPage() {
           <div className="space-y-3">
             {SECTION_ORDER.map((sectionId) => {
               const sectionItems = itemsBySection[sectionId];
+              if (sectionItems.length === 0) return null;
               const completed = sectionItems.filter((i) => i.completed).length;
               const total = sectionItems.length;
               const pct = total > 0 ? (completed / total) * 100 : 0;

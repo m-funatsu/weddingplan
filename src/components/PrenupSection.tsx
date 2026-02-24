@@ -9,6 +9,8 @@ interface PrenupSectionProps {
   language: "ja" | "en";
   onToggle: (itemId: string) => void;
   onNotesChange: (itemId: string, notes: string) => void;
+  onAddItem?: (sectionId: PrenupSectionId, label: string) => void;
+  onDeleteItem?: (itemId: string) => void;
 }
 
 export default function PrenupSection({
@@ -17,10 +19,14 @@ export default function PrenupSection({
   language,
   onToggle,
   onNotesChange,
+  onAddItem,
+  onDeleteItem,
 }: PrenupSectionProps) {
   const [expanded, setExpanded] = useState(true);
   const [editingNotes, setEditingNotes] = useState<string | null>(null);
   const [notesInput, setNotesInput] = useState("");
+  const [newItemInput, setNewItemInput] = useState("");
+  const [showAddForm, setShowAddForm] = useState(false);
 
   const isJa = language === "ja";
   const sectionInfo = PRENUP_SECTION_INFO[sectionId];
@@ -36,6 +42,14 @@ export default function PrenupSection({
     onNotesChange(itemId, notesInput);
     setEditingNotes(null);
     setNotesInput("");
+  }
+
+  function handleAddItem() {
+    const label = newItemInput.trim();
+    if (!label || !onAddItem) return;
+    onAddItem(sectionId, label);
+    setNewItemInput("");
+    setShowAddForm(false);
   }
 
   return (
@@ -99,9 +113,11 @@ export default function PrenupSection({
                   >
                     {item.label}
                   </p>
-                  <p className="text-xs text-gray-500 mt-0.5">
-                    {item.description}
-                  </p>
+                  {item.description && (
+                    <p className="text-xs text-gray-500 mt-0.5">
+                      {item.description}
+                    </p>
+                  )}
 
                   {/* Notes */}
                   {editingNotes === item.id ? (
@@ -130,21 +146,80 @@ export default function PrenupSection({
                       </div>
                     </div>
                   ) : (
-                    <button
-                      onClick={() => handleNotesEdit(item)}
-                      className="mt-1 text-xs text-gray-400 hover:text-rose-600 transition-colors"
-                    >
-                      {item.notes
-                        ? `📝 ${item.notes}`
-                        : isJa
-                        ? "📝 メモを追加"
-                        : "📝 Add notes"}
-                    </button>
+                    <div className="flex items-center gap-2 mt-1">
+                      <button
+                        onClick={() => handleNotesEdit(item)}
+                        className="text-xs text-gray-400 hover:text-rose-600 transition-colors"
+                      >
+                        {item.notes
+                          ? `📝 ${item.notes}`
+                          : isJa
+                          ? "📝 メモを追加"
+                          : "📝 Add notes"}
+                      </button>
+                    </div>
                   )}
                 </div>
+                {/* Delete button for custom items (those without prenup_ prefix) */}
+                {onDeleteItem && !item.id.startsWith("prenup_") && (
+                  <button
+                    onClick={() => onDeleteItem(item.id)}
+                    className="mt-0.5 p-1 text-gray-300 hover:text-red-500 transition-colors"
+                    title={isJa ? "削除" : "Delete"}
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                )}
               </div>
             </div>
           ))}
+
+          {/* Add custom item */}
+          {onAddItem && (
+            <div className="p-3 border-t border-gray-100">
+              {showAddForm ? (
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={newItemInput}
+                    onChange={(e) => setNewItemInput(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") handleAddItem();
+                      if (e.key === "Escape") { setShowAddForm(false); setNewItemInput(""); }
+                    }}
+                    className="flex-1 px-3 py-1.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-rose-500"
+                    placeholder={isJa ? "項目名を入力..." : "Enter item name..."}
+                    autoFocus
+                  />
+                  <button
+                    onClick={handleAddItem}
+                    disabled={!newItemInput.trim()}
+                    className="px-3 py-1.5 text-sm bg-rose-600 text-white rounded-lg hover:bg-rose-700 disabled:opacity-40 disabled:cursor-not-allowed"
+                  >
+                    {isJa ? "追加" : "Add"}
+                  </button>
+                  <button
+                    onClick={() => { setShowAddForm(false); setNewItemInput(""); }}
+                    className="px-2 py-1.5 text-sm text-gray-500 hover:text-gray-700"
+                  >
+                    {isJa ? "取消" : "Cancel"}
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={() => setShowAddForm(true)}
+                  className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-rose-600 transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                  </svg>
+                  {isJa ? "項目を追加" : "Add item"}
+                </button>
+              )}
+            </div>
+          )}
         </div>
       )}
     </div>
