@@ -14,10 +14,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WeddingPlan - 結婚式準備をスマートに管理",
+  title: "Wedding Roadmap - 結婚をプロジェクトとしてスマートに管理",
   description:
-    "結婚式準備の全タスクを一元管理。100以上のプリセットタスク、予算追跡、タイムライン管理、婚前契約チェックリストで、理想の結婚式を実現。",
-  keywords: ["結婚式", "ウェディング", "準備", "タスク管理", "予算", "wedding", "planning"],
+    "結婚プロジェクトの全タスクを一元管理。100以上のプリセットタスク、予算追跡、タイムライン管理、婚前契約チェックリストで、理想の結婚を実現。",
+  keywords: ["結婚式", "ウェディング", "準備", "タスク管理", "予算", "wedding", "planning", "結婚プロジェクト", "roadmap"],
 };
 
 export default function RootLayout({

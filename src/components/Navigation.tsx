@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { usePremium } from "@/contexts/PremiumContext";
 
 const navItems = [
   { href: "/dashboard", labelJa: "ダッシュボード", labelEn: "Dashboard", icon: "dashboard" },
@@ -50,8 +51,11 @@ function NavIcon({ type, className }: { type: string; className?: string }) {
   }
 }
 
+const PRO_ITEMS = new Set(["/budget", "/prenup"]);
+
 export default function Navigation() {
   const pathname = usePathname();
+  const { isPremium } = usePremium();
 
   if (pathname === "/") return null;
 
@@ -63,7 +67,7 @@ export default function Navigation() {
           href="/"
           className="flex items-center gap-2 px-5 py-5 border-b border-gray-100"
         >
-          <span className="text-xl font-bold text-rose-600">WeddingPlan</span>
+          <span className="text-xl font-bold text-rose-600">Wedding Roadmap</span>
         </Link>
         <div className="flex-1 py-4">
           {navItems.map((item) => {
@@ -81,12 +85,15 @@ export default function Navigation() {
               >
                 <NavIcon type={item.icon} />
                 <span>{item.labelJa}</span>
+                {!isPremium && PRO_ITEMS.has(item.href) && (
+                  <span className="ml-auto px-1.5 py-0.5 bg-rose-100 text-rose-700 rounded text-[10px] font-bold leading-none" aria-label="Premium機能">PRO</span>
+                )}
               </Link>
             );
           })}
         </div>
         <div className="px-5 py-4 border-t border-gray-100">
-          <p className="text-xs text-gray-400">WeddingPlan MVP v0.1.0</p>
+          <p className="text-xs text-gray-400">Wedding Roadmap v0.2.0</p>
         </div>
       </nav>
 
@@ -107,7 +114,12 @@ export default function Navigation() {
                 }`}
                 aria-current={isActive ? "page" : undefined}
               >
-                <NavIcon type={item.icon} className="w-5 h-5" />
+                <div className="relative">
+                  <NavIcon type={item.icon} className="w-5 h-5" />
+                  {!isPremium && PRO_ITEMS.has(item.href) && (
+                    <span className="absolute -top-1 -right-2 px-1 bg-rose-500 text-white rounded text-[8px] font-bold leading-tight" aria-label="Premium機能">PRO</span>
+                  )}
+                </div>
                 <span className="truncate max-w-[4rem]">{item.labelJa}</span>
               </Link>
             );

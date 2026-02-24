@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 
 const features = [
@@ -44,18 +42,21 @@ const features = [
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-rose-100">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-rose-600 focus:text-white focus:rounded-lg">
+        コンテンツへスキップ
+      </a>
       {/* Hero */}
-      <header className="relative overflow-hidden">
+      <header className="relative overflow-hidden" id="main-content">
         <div className="absolute inset-0 bg-gradient-to-r from-rose-600/10 to-pink-600/10" />
         <div className="relative max-w-5xl mx-auto px-4 pt-16 pb-20 sm:pt-24 sm:pb-28 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-rose-100 text-rose-700 rounded-full text-sm font-medium mb-6">
-            💍 結婚式準備の完全ガイド
+            💍 結婚プロジェクト管理ツール
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 tracking-tight">
-            Wedding<span className="text-rose-600">Plan</span>
+            Wedding<span className="text-rose-600"> Roadmap</span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed">
-            婚約から式後手続きまで、すべてのタスクを一元管理。
+            婚約から新生活まで、結婚というプロジェクトのすべてを一元管理。
             <br className="hidden sm:block" />
             100以上のプリセットで、準備の漏れを防ぎます。
           </p>
@@ -82,7 +83,7 @@ export default function LandingPage() {
           充実の機能
         </h2>
         <p className="text-center text-gray-500 mb-12 max-w-lg mx-auto">
-          結婚式準備に必要なすべてを、ひとつのアプリで
+          結婚プロジェクトに必要なすべてを、ひとつのアプリで
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {features.map((f) => (
@@ -137,10 +138,93 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Pricing */}
+      <section className="max-w-5xl mx-auto px-4 py-20">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-4">
+          料金プラン
+        </h2>
+        <p className="text-center text-gray-500 mb-10 max-w-lg mx-auto">
+          無料で始めて、必要に応じてアップグレード
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          {/* Free Plan */}
+          <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8">
+            <h3 className="text-lg font-bold text-gray-900 mb-1">Free</h3>
+            <div className="mb-4">
+              <span className="text-3xl font-bold text-gray-900">¥0</span>
+            </div>
+            <ul className="space-y-3 text-sm text-gray-600 mb-6">
+              <li className="flex items-start gap-2">
+                <span className="text-green-500 mt-0.5" aria-hidden="true">&#10003;</span>
+                ダッシュボード
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-green-500 mt-0.5" aria-hidden="true">&#10003;</span>
+                100+プリセットタスク
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-green-500 mt-0.5" aria-hidden="true">&#10003;</span>
+                タイムライン管理
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-green-500 mt-0.5" aria-hidden="true">&#10003;</span>
+                設定・ゲストモード
+              </li>
+            </ul>
+            <Link
+              href="/dashboard"
+              className="block w-full py-3 text-center bg-gray-100 text-gray-700 font-semibold rounded-xl hover:bg-gray-200 transition-colors"
+            >
+              無料で始める
+            </Link>
+          </div>
+
+          {/* Premium Plan */}
+          <div className="bg-white rounded-2xl border-2 border-rose-300 p-6 sm:p-8 relative">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-rose-600 text-white text-xs font-bold rounded-full">
+              おすすめ
+            </div>
+            <h3 className="text-lg font-bold text-gray-900 mb-1">Premium</h3>
+            <div className="mb-4">
+              <span className="text-3xl font-bold text-gray-900">¥980</span>
+              <span className="text-sm text-gray-500 ml-1">買い切り</span>
+            </div>
+            <ul className="space-y-3 text-sm text-gray-600 mb-6">
+              <li className="flex items-start gap-2">
+                <span className="text-green-500 mt-0.5" aria-hidden="true">&#10003;</span>
+                Freeの全機能
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-rose-500 mt-0.5" aria-hidden="true">&#9733;</span>
+                予算管理ページ
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-rose-500 mt-0.5" aria-hidden="true">&#9733;</span>
+                婚前契約チェックリスト
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-rose-500 mt-0.5" aria-hidden="true">&#9733;</span>
+                データエクスポート/インポート
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-rose-500 mt-0.5" aria-hidden="true">&#9733;</span>
+                クラウド同期（複数端末）
+              </li>
+            </ul>
+            <Link
+              href="/dashboard"
+              className="block w-full py-3 text-center bg-rose-600 text-white font-semibold rounded-xl hover:bg-rose-700 transition-all shadow-lg shadow-rose-600/25"
+            >
+              Premiumを購入
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="max-w-5xl mx-auto px-4 py-20 text-center">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
-          理想の結婚式を、計画的に
+          理想の結婚を、計画的に
         </h2>
         <p className="text-gray-500 mb-8 max-w-md mx-auto">
           無料で始められます。ゲストモードならアカウント登録も不要。
@@ -156,7 +240,7 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="border-t border-rose-100 bg-white/40">
         <div className="max-w-5xl mx-auto px-4 py-6 flex items-center justify-between text-sm text-gray-400">
-          <span>WeddingPlan MVP v0.1.0</span>
+          <span>Wedding Roadmap v0.2.0</span>
           <span>Made with ♥</span>
         </div>
       </footer>

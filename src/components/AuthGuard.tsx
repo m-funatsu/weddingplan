@@ -5,6 +5,7 @@ import type { User } from "@supabase/supabase-js";
 import { getUser, onAuthStateChange, signOut } from "@/lib/auth";
 import { isSupabaseConfigured } from "@/lib/supabase";
 import AuthForm from "./AuthForm";
+import { PremiumProvider } from "@/contexts/PremiumContext";
 
 interface AuthContextValue {
   user: User | null;
@@ -24,7 +25,7 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 
-const GUEST_MODE_KEY = "weddingplan_guest_mode";
+const GUEST_MODE_KEY = "weddingroadmap_guest_mode";
 
 export default function AuthGuard({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
@@ -95,7 +96,9 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
 
   return (
     <AuthContext.Provider value={{ user, isGuest, isLoading, logout }}>
-      {children}
+      <PremiumProvider>
+        {children}
+      </PremiumProvider>
     </AuthContext.Provider>
   );
 }

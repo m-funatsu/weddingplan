@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import { useWeddingSettings, useWeddingTasks, usePrenupItems } from "@/lib/hooks";
+import { usePremium } from "@/contexts/PremiumContext";
 
 export default function SettingsPage() {
   const { settings, isLoaded, updateSettings } = useWeddingSettings();
   const { resetTasks } = useWeddingTasks();
   const { resetItems } = usePrenupItems();
+  const { isPremium, upgrade } = usePremium();
   const [showResetConfirm, setShowResetConfirm] = useState(false);
 
   const isJa = settings.language === "ja";
@@ -19,16 +21,16 @@ export default function SettingsPage() {
 
   function handleExport() {
     const data = {
-      tasks: localStorage.getItem("weddingplan_v1_tasks"),
-      prenup: localStorage.getItem("weddingplan_v1_prenup"),
-      settings: localStorage.getItem("weddingplan_v1_settings"),
+      tasks: localStorage.getItem("weddingroadmap_v1_tasks"),
+      prenup: localStorage.getItem("weddingroadmap_v1_prenup"),
+      settings: localStorage.getItem("weddingroadmap_v1_settings"),
       exportedAt: new Date().toISOString(),
     };
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `weddingplan-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `weddingroadmap-backup-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
   }
@@ -44,9 +46,9 @@ export default function SettingsPage() {
       reader.onload = (ev) => {
         try {
           const data = JSON.parse(ev.target?.result as string);
-          if (data.tasks) localStorage.setItem("weddingplan_v1_tasks", data.tasks);
-          if (data.prenup) localStorage.setItem("weddingplan_v1_prenup", data.prenup);
-          if (data.settings) localStorage.setItem("weddingplan_v1_settings", data.settings);
+          if (data.tasks) localStorage.setItem("weddingroadmap_v1_tasks", data.tasks);
+          if (data.prenup) localStorage.setItem("weddingroadmap_v1_prenup", data.prenup);
+          if (data.settings) localStorage.setItem("weddingroadmap_v1_settings", data.settings);
           window.location.reload();
         } catch {
           alert(isJa ? "ファイルの読み込みに失敗しました" : "Failed to import file");
@@ -60,7 +62,7 @@ export default function SettingsPage() {
   if (!isLoaded) {
     return (
       <div className="page-with-nav min-h-screen flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-rose-600 border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-rose-600 border-t-transparent rounded-full animate-spin" role="status" aria-label="読み込み中" />
       </div>
     );
   }
@@ -79,10 +81,11 @@ export default function SettingsPage() {
           </h2>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="wedding-date" className="block text-sm font-medium text-gray-700 mb-1">
               {isJa ? "挙式日" : "Wedding Date"}
             </label>
             <input
+              id="wedding-date"
               type="date"
               value={settings.weddingDate ?? ""}
               onChange={(e) =>
@@ -99,10 +102,11 @@ export default function SettingsPage() {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="partner1-name" className="block text-sm font-medium text-gray-700 mb-1">
                 {isJa ? "パートナー1の名前" : "Partner 1 Name"}
               </label>
               <input
+                id="partner1-name"
                 type="text"
                 value={settings.partner1Name}
                 onChange={(e) => updateSettings({ partner1Name: e.target.value })}
@@ -111,10 +115,11 @@ export default function SettingsPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="partner2-name" className="block text-sm font-medium text-gray-700 mb-1">
                 {isJa ? "パートナー2の名前" : "Partner 2 Name"}
               </label>
               <input
+                id="partner2-name"
                 type="text"
                 value={settings.partner2Name}
                 onChange={(e) => updateSettings({ partner2Name: e.target.value })}
@@ -131,10 +136,11 @@ export default function SettingsPage() {
             {isJa ? "予算設定" : "Budget Settings"}
           </h2>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="total-budget" className="block text-sm font-medium text-gray-700 mb-1">
               {isJa ? "予算総額 (円)" : "Total Budget (JPY)"}
             </label>
             <input
+              id="total-budget"
               type="number"
               value={settings.totalBudget}
               onChange={(e) =>
@@ -182,20 +188,37 @@ export default function SettingsPage() {
             {isJa ? "データ管理" : "Data Management"}
           </h2>
 
-          <div className="flex flex-col sm:flex-row gap-3">
-            <button
-              onClick={handleExport}
-              className="flex-1 py-2.5 px-4 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors"
-            >
-              {isJa ? "データをエクスポート" : "Export Data"}
-            </button>
-            <button
-              onClick={handleImport}
-              className="flex-1 py-2.5 px-4 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors"
-            >
-              {isJa ? "データをインポート" : "Import Data"}
-            </button>
-          </div>
+          {isPremium ? (
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={handleExport}
+                className="flex-1 py-2.5 px-4 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors"
+              >
+                {isJa ? "データをエクスポート" : "Export Data"}
+              </button>
+              <button
+                onClick={handleImport}
+                className="flex-1 py-2.5 px-4 bg-gray-100 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-200 transition-colors"
+              >
+                {isJa ? "データをインポート" : "Import Data"}
+              </button>
+            </div>
+          ) : (
+            <div className="bg-rose-50 border border-rose-200 rounded-lg p-4 text-center">
+              <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-rose-100 text-rose-700 rounded-full text-xs font-bold mb-2">
+                PRO
+              </div>
+              <p className="text-sm text-gray-600 mb-3">
+                {isJa ? "データのエクスポート/インポートはPremium機能です" : "Data export/import is a Premium feature"}
+              </p>
+              <button
+                onClick={upgrade}
+                className="px-4 py-2 bg-rose-600 text-white text-sm font-medium rounded-lg hover:bg-rose-700 transition-colors"
+              >
+                {isJa ? "Premiumにアップグレード (¥980)" : "Upgrade to Premium (¥980)"}
+              </button>
+            </div>
+          )}
 
           <div className="border-t border-gray-100 pt-4">
             {showResetConfirm ? (

@@ -8,9 +8,9 @@ import {
 } from "@/types/index";
 import { supabase, isSupabaseConfigured } from "./supabase";
 
-const TASKS_KEY = "weddingplan_v1_tasks";
-const PRENUP_KEY = "weddingplan_v1_prenup";
-const SETTINGS_KEY = "weddingplan_v1_settings";
+const TASKS_KEY = "weddingroadmap_v1_tasks";
+const PRENUP_KEY = "weddingroadmap_v1_prenup";
+const SETTINGS_KEY = "weddingroadmap_v1_settings";
 
 let tasksCache: WeddingTask[] | null = null;
 let prenupCache: PrenupItem[] | null = null;
@@ -75,8 +75,8 @@ function mapDbToPrenupItem(row: any): PrenupItem {
 
 async function supabaseGetTasks(userId: string): Promise<WeddingTask[]> {
   const { data, error } = await supabase
-    .from("weddingplan_tasks")
-    .select("*")
+    .from("weddingroadmap_tasks")
+    .select("id, task_id, category_id, phase_id, name, description, status, recommended_timing, months_before, calculated_deadline, subtasks, notes, budget_estimate_min, budget_estimate_max, actual_cost, memo, completed_at, updated_at")
     .eq("user_id", userId)
     .order("months_before", { ascending: false });
 
@@ -89,7 +89,7 @@ async function supabaseUpsertTask(
   userId: string,
   task: WeddingTask
 ): Promise<void> {
-  await supabase.from("weddingplan_tasks").upsert(
+  await supabase.from("weddingroadmap_tasks").upsert(
     {
       id: task.id,
       user_id: userId,
@@ -119,8 +119,8 @@ async function supabaseUpsertTask(
 
 async function supabaseGetPrenupItems(userId: string): Promise<PrenupItem[]> {
   const { data, error } = await supabase
-    .from("weddingplan_prenup_items")
-    .select("*")
+    .from("weddingroadmap_prenup_items")
+    .select("id, section_id, label, description, completed, notes")
     .eq("user_id", userId)
     .order("section_id", { ascending: true });
 
@@ -133,7 +133,7 @@ async function supabaseUpsertPrenupItem(
   userId: string,
   item: PrenupItem
 ): Promise<void> {
-  await supabase.from("weddingplan_prenup_items").upsert(
+  await supabase.from("weddingroadmap_prenup_items").upsert(
     {
       id: item.id,
       user_id: userId,
@@ -151,7 +151,7 @@ async function supabaseUpsertPrenupItem(
 
 async function supabaseGetSettings(userId: string): Promise<WeddingSettings> {
   const { data, error } = await supabase
-    .from("weddingplan_profiles")
+    .from("weddingroadmap_profiles")
     .select("wedding_date, partner1_name, partner2_name, language, total_budget")
     .eq("user_id", userId)
     .single();
@@ -171,7 +171,7 @@ async function supabaseSaveSettings(
   userId: string,
   settings: WeddingSettings
 ): Promise<void> {
-  await supabase.from("weddingplan_profiles").upsert(
+  await supabase.from("weddingroadmap_profiles").upsert(
     {
       user_id: userId,
       wedding_date: settings.weddingDate,
@@ -446,41 +446,75 @@ export async function syncLocalToSupabase(): Promise<void> {
   const userId = await getCurrentUserId();
   if (!userId) return;
 
-  // Sync tasks
   const localTasks = getTasks();
-  if (localTasks.length > 0) {
-    const remoteTasks = await supabaseGetTasks(userId);
-    const remoteIds = new Set(remoteTasks.map((t) => t.id));
-
-    for (const task of localTasks) {
-      if (!remoteIds.has(task.id)) {
-        await supabaseUpsertTask(userId, task);
-      }
-    }
-  }
-
-  // Sync prenup items
   const localPrenup = getPrenupItems();
-  if (localPrenup.length > 0) {
-    const remotePrenup = await supabaseGetPrenupItems(userId);
-    const remoteIds = new Set(remotePrenup.map((p) => p.id));
 
-    for (const item of localPrenup) {
-      if (!remoteIds.has(item.id)) {
-        await supabaseUpsertPrenupItem(userId, item);
-      }
-    }
-  }
+  // Fetch remote data in parallel
+  const [remoteTasks, remotePrenup] = await Promise.all([
+    localTasks.length > 0 ? supabaseGetTasks(userId) : Promise.resolve([] as WeddingTask[]),
+    localPrenup.length > 0 ? supabaseGetPrenupItems(userId) : Promise.resolve([] as PrenupItem[]),
+  ]);
 
-  // Sync settings
+  const remoteTaskIds = new Set(remoteTasks.map((t) => t.id));
+  const newTasks = localTasks.filter((t) => !remoteTaskIds.has(t.id));
+
+  const remotePrenupIds = new Set(remotePrenup.map((p) => p.id));
+  const newPrenup = localPrenup.filter((p) => !remotePrenupIds.has(p.id));
+
   const localSettings = getSettings();
-  if (
+  const settingsChanged =
     localSettings.weddingDate !== DEFAULT_SETTINGS.weddingDate ||
     localSettings.partner1Name !== DEFAULT_SETTINGS.partner1Name ||
     localSettings.partner2Name !== DEFAULT_SETTINGS.partner2Name ||
     localSettings.language !== DEFAULT_SETTINGS.language ||
-    localSettings.totalBudget !== DEFAULT_SETTINGS.totalBudget
-  ) {
-    await supabaseSaveSettings(userId, localSettings);
-  }
+    localSettings.totalBudget !== DEFAULT_SETTINGS.totalBudget;
+
+  // Batch upsert and sync in parallel
+  await Promise.all([
+    ...(newTasks.length > 0
+      ? [
+          supabase.from("weddingroadmap_tasks").upsert(
+            newTasks.map((task) => ({
+              id: task.id,
+              user_id: userId,
+              task_id: task.taskId,
+              category_id: task.categoryId,
+              phase_id: task.phaseId,
+              name: task.name,
+              description: task.description,
+              status: task.status,
+              recommended_timing: task.recommendedTiming,
+              months_before: task.monthsBefore,
+              calculated_deadline: task.calculatedDeadline,
+              subtasks: task.subtasks,
+              notes: task.notes,
+              budget_estimate_min: task.budgetEstimateMin,
+              budget_estimate_max: task.budgetEstimateMax,
+              actual_cost: task.actualCost,
+              memo: task.memo,
+              completed_at: task.completedAt,
+              updated_at: task.updatedAt,
+            })),
+            { onConflict: "id" }
+          ),
+        ]
+      : []),
+    ...(newPrenup.length > 0
+      ? [
+          supabase.from("weddingroadmap_prenup_items").upsert(
+            newPrenup.map((item) => ({
+              id: item.id,
+              user_id: userId,
+              section_id: item.sectionId,
+              label: item.label,
+              description: item.description,
+              completed: item.completed,
+              notes: item.notes,
+            })),
+            { onConflict: "id" }
+          ),
+        ]
+      : []),
+    ...(settingsChanged ? [supabaseSaveSettings(userId, localSettings)] : []),
+  ]);
 }

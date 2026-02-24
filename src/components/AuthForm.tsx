@@ -75,9 +75,9 @@ export default function AuthForm({ onSuccess, onSkip }: AuthFormProps) {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-rose-600 mb-1">WeddingPlan</h1>
+          <h1 className="text-2xl font-bold text-rose-600 mb-1">Wedding Roadmap</h1>
           <p className="text-sm text-gray-500">
-            結婚式準備をスマートに管理
+            結婚をプロジェクトとしてスマートに管理
           </p>
         </div>
 

@@ -5,6 +5,7 @@ import { useWeddingSettings, usePrenupItems } from "@/lib/hooks";
 import { PRENUP_SECTION_INFO, type PrenupSectionId } from "@/types";
 import PrenupSection from "@/components/PrenupSection";
 import ProgressRing from "@/components/ProgressRing";
+import PremiumGate from "@/components/PremiumGate";
 
 const SECTION_ORDER: PrenupSectionId[] = [
   "housework",
@@ -70,12 +71,13 @@ export default function PrenupPage() {
   if (!isLoaded) {
     return (
       <div className="page-with-nav min-h-screen flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-rose-600 border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-rose-600 border-t-transparent rounded-full animate-spin" role="status" aria-label="読み込み中" />
       </div>
     );
   }
 
   return (
+    <PremiumGate featureName="婚前契約チェックリスト">
     <div className="page-with-nav min-h-screen bg-gradient-to-b from-rose-50/50 to-white">
       <div className="max-w-4xl mx-auto px-4 py-6 sm:py-8 space-y-6">
         {/* Header */}
@@ -164,5 +166,6 @@ export default function PrenupPage() {
         </div>
       </div>
     </div>
+    </PremiumGate>
   );
 }

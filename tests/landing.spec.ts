@@ -6,12 +6,12 @@ test.describe('Landing Page', () => {
   });
 
   test('page loads with correct title', async ({ page }) => {
-    await expect(page).toHaveTitle(/WeddingPlan/);
+    await expect(page).toHaveTitle(/Wedding Roadmap/);
   });
 
-  test('hero section has "WeddingPlan" text', async ({ page }) => {
+  test('hero section has "Wedding Roadmap" text', async ({ page }) => {
     const hero = page.locator('header');
-    await expect(hero.locator('h1')).toContainText('WeddingPlan');
+    await expect(hero.locator('h1')).toContainText('Wedding');
   });
 
   test('feature cards are visible (6 features)', async ({ page }) => {
@@ -55,7 +55,7 @@ test.describe('Landing Page', () => {
   test('footer is visible', async ({ page }) => {
     const footer = page.locator('footer');
     await expect(footer).toBeVisible();
-    await expect(footer).toContainText('WeddingPlan MVP v0.1.0');
+    await expect(footer).toContainText('Wedding Roadmap v0.2.0');
     await expect(footer).toContainText('Made with');
   });
 });
