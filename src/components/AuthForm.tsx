@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { signIn, signUp } from "@/lib/auth";
+import { isSupabaseConfigured } from "@/lib/supabase";
 
 interface AuthFormProps {
   onSuccess: () => void;
@@ -16,9 +17,17 @@ export default function AuthForm({ onSuccess, onSkip }: AuthFormProps) {
   const [loading, setLoading] = useState(false);
   const [signupSuccess, setSignupSuccess] = useState(false);
 
+  const supabaseReady = isSupabaseConfigured();
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
+
+    if (!supabaseReady) {
+      setError("サーバーに接続できません。ゲストモードをお使いください。");
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -164,10 +173,19 @@ export default function AuthForm({ onSuccess, onSkip }: AuthFormProps) {
         <div className="mt-4 text-center">
           <button
             onClick={onSkip}
-            className="text-sm text-gray-500 hover:text-gray-700 transition-colors underline underline-offset-2"
+            className={`text-sm transition-colors underline underline-offset-2 ${
+              supabaseReady
+                ? "text-gray-500 hover:text-gray-700"
+                : "text-rose-600 hover:text-rose-700 font-medium"
+            }`}
           >
             ログインせずに使う（ゲストモード）
           </button>
+          {!supabaseReady && (
+            <p className="text-xs text-gray-400 mt-2">
+              サーバー未接続のため、データはこの端末にのみ保存されます
+            </p>
+          )}
         </div>
       </div>
     </div>

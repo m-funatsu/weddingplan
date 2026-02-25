@@ -33,13 +33,16 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    const storedGuest = localStorage.getItem(GUEST_MODE_KEY);
+
     if (!isSupabaseConfigured()) {
-      setIsGuest(true);
+      // Even without Supabase, require explicit guest opt-in
+      if (storedGuest === "true") {
+        setIsGuest(true);
+      }
       setIsLoading(false);
       return;
     }
-
-    const storedGuest = localStorage.getItem(GUEST_MODE_KEY);
 
     getUser().then((u) => {
       if (u) {
