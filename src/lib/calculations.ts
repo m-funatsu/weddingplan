@@ -2,11 +2,12 @@ import { addMonths, differenceInDays, differenceInMonths, format, parseISO, isBe
 import { WeddingTask, CategoryId, PhaseId, CATEGORY_INFO } from "@/types/index";
 
 /**
- * Calculate deadline from wedding date by subtracting monthsBefore.
+ * Calculate deadline from anchor date by subtracting monthsBefore.
+ * For ceremony tasks, use ceremonyDate; for others, use marriageDate.
  */
-export function calculateDeadline(weddingDate: string, monthsBefore: number): string {
-  const wedding = parseISO(weddingDate);
-  const deadline = addMonths(wedding, -monthsBefore);
+export function calculateDeadline(anchorDate: string, monthsBefore: number): string {
+  const anchor = parseISO(anchorDate);
+  const deadline = addMonths(anchor, -monthsBefore);
   return format(deadline, "yyyy-MM-dd");
 }
 
@@ -167,26 +168,24 @@ export function getTasksByCategory(tasks: WeddingTask[], categoryId: CategoryId)
 }
 
 /**
- * Determine the current phase based on months until wedding.
+ * Determine the current phase based on months until marriage registration date.
  */
-export function getCurrentPhase(weddingDate: string | null): PhaseId {
-  if (!weddingDate) return "phase_01";
+export function getCurrentPhase(marriageDate: string | null, hasCeremony: boolean = true): PhaseId {
+  if (!marriageDate) return "phase_01";
 
   const now = new Date();
-  const wedding = parseISO(weddingDate);
-  const monthsUntil = differenceInMonths(wedding, now);
-  const daysUntil = differenceInDays(wedding, now);
+  const marriage = parseISO(marriageDate);
+  const monthsUntil = differenceInMonths(marriage, now);
 
-  if (monthsUntil > 12) return "phase_01";
-  if (monthsUntil > 10) return "phase_02";
-  if (monthsUntil > 8) return "phase_03";
+  if (monthsUntil > 18) return "phase_01";
+  if (monthsUntil > 12) return "phase_02";
+  if (monthsUntil > 9) return "phase_03";
   if (monthsUntil > 6) return "phase_04";
-  if (monthsUntil > 4) return "phase_05";
-  if (monthsUntil > 2) return "phase_06";
-  if (monthsUntil > 1) return "phase_07";
-  if (daysUntil > 0) return "phase_08";
-  if (daysUntil === 0) return "phase_09";
-  return "phase_10";
+  if (monthsUntil > 2 && hasCeremony) return "phase_05";
+  if (monthsUntil > 0) return "phase_06";
+  if (monthsUntil > -1) return "phase_07";
+  if (monthsUntil > -3) return "phase_08";
+  return "phase_09";
 }
 
 // --- Formatting ---
@@ -215,20 +214,20 @@ export function formatDate(dateString: string, lang: "ja" | "en"): string {
 }
 
 /**
- * Get number of days until the wedding.
+ * Get number of days until the marriage registration date.
  */
-export function getDaysUntilWedding(weddingDate: string): number {
+export function getDaysUntilMarriage(marriageDate: string): number {
   const now = new Date();
   now.setHours(0, 0, 0, 0);
-  const wedding = parseISO(weddingDate);
-  return differenceInDays(wedding, now);
+  const marriage = parseISO(marriageDate);
+  return differenceInDays(marriage, now);
 }
 
 /**
- * Get number of months until the wedding.
+ * Get number of months until the marriage registration date.
  */
-export function getMonthsUntilWedding(weddingDate: string): number {
+export function getMonthsUntilMarriage(marriageDate: string): number {
   const now = new Date();
-  const wedding = parseISO(weddingDate);
-  return differenceInMonths(wedding, now);
+  const marriage = parseISO(marriageDate);
+  return differenceInMonths(marriage, now);
 }

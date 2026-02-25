@@ -3,15 +3,15 @@ import Link from "next/link";
 const features = [
   {
     icon: "📋",
-    title: "100+プリセットタスク",
-    titleEn: "100+ Preset Tasks",
-    desc: "市場調査に基づく包括的なタスクリスト。婚約から式後手続きまで網羅。",
+    title: "140+プリセットタスク",
+    titleEn: "140+ Preset Tasks",
+    desc: "交際中の価値観すり合わせから新生活の立ち上げまで。結婚の道のりを網羅。",
   },
   {
     icon: "📅",
-    title: "タイムライン管理",
-    titleEn: "Timeline Management",
-    desc: "挙式日から逆算した10フェーズのタイムライン。期限を自動計算。",
+    title: "9フェーズのロードマップ",
+    titleEn: "9-Phase Roadmap",
+    desc: "入籍予定日から逆算した9フェーズのタイムライン。結婚式は任意フェーズ。",
   },
   {
     icon: "💰",
@@ -50,15 +50,15 @@ export default function LandingPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-rose-600/10 to-pink-600/10" />
         <div className="relative max-w-5xl mx-auto px-4 pt-16 pb-20 sm:pt-24 sm:pb-28 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-rose-100 text-rose-700 rounded-full text-sm font-medium mb-6">
-            💍 結婚プロジェクト管理ツール
+            💍 結婚までの道のりを一元管理
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 tracking-tight">
             Wedding<span className="text-rose-600"> Roadmap</span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed">
-            婚約から新生活まで、結婚というプロジェクトのすべてを一元管理。
+            交際中の価値観すり合わせから入籍、新生活まで。
             <br className="hidden sm:block" />
-            100以上のプリセットで、準備の漏れを防ぎます。
+            結婚の道のり全体をマイルストーンで管理します。
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
@@ -83,7 +83,7 @@ export default function LandingPage() {
           充実の機能
         </h2>
         <p className="text-center text-gray-500 mb-12 max-w-lg mx-auto">
-          結婚プロジェクトに必要なすべてを、ひとつのアプリで
+          結婚までの道のりに必要なすべてを、ひとつのアプリで
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {features.map((f) => (
@@ -105,33 +105,41 @@ export default function LandingPage() {
       <section className="bg-white/60 backdrop-blur-sm border-y border-rose-100">
         <div className="max-w-5xl mx-auto px-4 py-16">
           <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-4">
-            10フェーズのタイムライン
+            9フェーズのロードマップ
           </h2>
           <p className="text-center text-gray-500 mb-10 max-w-lg mx-auto">
-            挙式日から逆算して、最適なスケジュールを自動計算
+            入籍予定日から逆算して、最適なスケジュールを自動計算
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-            {[
-              { num: "1", label: "婚約準備", time: "12ヶ月+" },
-              { num: "2", label: "情報収集", time: "12〜10ヶ月" },
-              { num: "3", label: "式場決定", time: "10〜8ヶ月" },
-              { num: "4", label: "詳細計画", time: "8〜6ヶ月" },
-              { num: "5", label: "本格準備", time: "6〜4ヶ月" },
-              { num: "6", label: "詰め作業", time: "4〜2ヶ月" },
-              { num: "7", label: "最終確認", time: "2〜1ヶ月" },
-              { num: "8", label: "直前準備", time: "〜前日" },
-              { num: "9", label: "挙式当日", time: "当日" },
-              { num: "10", label: "式後手続き", time: "式後" },
-            ].map((phase) => (
+          <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-9 gap-3">
+            {([
+              { num: "1", label: "価値観すり合わせ", time: "18ヶ月+" },
+              { num: "2", label: "プロポーズ・婚約", time: "18〜12ヶ月" },
+              { num: "3", label: "両家対応", time: "12〜9ヶ月" },
+              { num: "4", label: "資金・新居", time: "9〜6ヶ月" },
+              { num: "5", label: "結婚式準備", time: "6〜2ヶ月", optional: true },
+              { num: "6", label: "入籍・法的手続き", time: "2ヶ月〜当月" },
+              { num: "7", label: "引越し・立ち上げ", time: "入籍前後" },
+              { num: "8", label: "新生活安定", time: "入籍後1〜3ヶ月" },
+              { num: "9", label: "ライフプラン", time: "入籍後3ヶ月〜" },
+            ] as { num: string; label: string; time: string; optional?: boolean }[]).map((phase) => (
               <div
                 key={phase.num}
-                className="bg-white rounded-lg border border-rose-100 p-3 text-center hover:border-rose-300 transition-colors"
+                className={`bg-white rounded-lg border p-3 text-center hover:border-rose-300 transition-colors ${
+                  phase.optional ? "border-rose-200 border-dashed" : "border-rose-100"
+                }`}
               >
-                <div className="w-8 h-8 bg-rose-100 text-rose-700 rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-2">
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mx-auto mb-2 ${
+                  phase.optional ? "bg-purple-100 text-purple-700" : "bg-rose-100 text-rose-700"
+                }`}>
                   {phase.num}
                 </div>
                 <p className="text-sm font-medium text-gray-900">{phase.label}</p>
                 <p className="text-xs text-gray-400 mt-0.5">{phase.time}</p>
+                {phase.optional && (
+                  <span className="inline-block mt-1 text-[10px] text-purple-600 bg-purple-50 px-1.5 py-0.5 rounded">
+                    任意
+                  </span>
+                )}
               </div>
             ))}
           </div>
@@ -160,7 +168,7 @@ export default function LandingPage() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-green-500 mt-0.5" aria-hidden="true">&#10003;</span>
-                100+プリセットタスク
+                140+プリセットタスク
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-green-500 mt-0.5" aria-hidden="true">&#10003;</span>
@@ -224,7 +232,7 @@ export default function LandingPage() {
       {/* CTA */}
       <section className="max-w-5xl mx-auto px-4 py-20 text-center">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
-          理想の結婚を、計画的に
+          結婚までの道のりを、二人で歩もう
         </h2>
         <p className="text-gray-500 mb-8 max-w-md mx-auto">
           無料で始められます。ゲストモードならアカウント登録も不要。
@@ -233,7 +241,7 @@ export default function LandingPage() {
           href="/dashboard"
           className="inline-flex items-center justify-center px-10 py-4 bg-rose-600 text-white font-semibold rounded-xl hover:bg-rose-700 transition-all shadow-lg shadow-rose-600/25 text-lg"
         >
-          今すぐ準備を始める →
+          今すぐ始める →
         </Link>
       </section>
 

@@ -1,9 +1,9 @@
 import type { TaskTemplate, PrenupTemplate } from './index';
 
 export const TASK_TEMPLATES: TaskTemplate[] = [
-  // ===== PRE-MARRIAGE 婚前の準備 =====
+  // ===== ENGAGEMENT & VALUES プロポーズ・婚約 / 価値観すり合わせ =====
   {
-    taskId: 'pre_001', categoryId: 'pre_marriage', phaseId: 'phase_01',
+    taskId: 'pre_001', categoryId: 'engagement', phaseId: 'phase_02',
     name: 'プロポーズの計画・実行', nameEn: 'Plan & Execute Proposal',
     description: 'プロポーズの場所、タイミング、演出を計画し実行する', descriptionEn: 'Plan the location, timing, and presentation for the proposal',
     recommendedTiming: '12ヶ月以上前', recommendedTimingEn: '12+ months before',
@@ -18,7 +18,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 10000, budgetEstimateMax: 200000,
   },
   {
-    taskId: 'pre_002', categoryId: 'pre_marriage', phaseId: 'phase_01',
+    taskId: 'pre_002', categoryId: 'engagement', phaseId: 'phase_02',
     name: '婚約指輪の購入', nameEn: 'Purchase Engagement Ring',
     description: '婚約指輪のデザイン選定、サイズ確認、購入', descriptionEn: 'Select design, confirm size, and purchase engagement ring',
     recommendedTiming: '12ヶ月以上前', recommendedTimingEn: '12+ months before',
@@ -34,7 +34,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 200000, budgetEstimateMax: 800000,
   },
   {
-    taskId: 'pre_003', categoryId: 'pre_marriage', phaseId: 'phase_01',
+    taskId: 'pre_003', categoryId: 'family_relations', phaseId: 'phase_03',
     name: '両家への挨拶', nameEn: 'Meet Both Families',
     description: '互いの両親への結婚の挨拶と報告', descriptionEn: 'Formally greet and inform both families about the marriage',
     recommendedTiming: '12ヶ月以上前', recommendedTimingEn: '12+ months before',
@@ -49,7 +49,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 5000, budgetEstimateMax: 20000,
   },
   {
-    taskId: 'pre_004', categoryId: 'pre_marriage', phaseId: 'phase_01',
+    taskId: 'pre_004', categoryId: 'family_relations', phaseId: 'phase_03',
     name: '顔合わせ食事会', nameEn: 'Family Introduction Dinner',
     description: '両家の顔合わせ食事会の企画と実施', descriptionEn: 'Plan and host a formal dinner for both families to meet',
     recommendedTiming: '12ヶ月以上前', recommendedTimingEn: '12+ months before',
@@ -64,7 +64,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 30000, budgetEstimateMax: 100000,
   },
   {
-    taskId: 'pre_005', categoryId: 'pre_marriage', phaseId: 'phase_01',
+    taskId: 'pre_005', categoryId: 'family_relations', phaseId: 'phase_03',
     name: '結納の検討・実施', nameEn: 'Consider Yuino Ceremony',
     description: '結納を行うか検討し、実施する場合は準備', descriptionEn: 'Decide whether to hold a traditional Yuino engagement ceremony',
     recommendedTiming: '12ヶ月以上前', recommendedTimingEn: '12+ months before',
@@ -79,7 +79,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 50000, budgetEstimateMax: 300000,
   },
   {
-    taskId: 'pre_006', categoryId: 'pre_marriage', phaseId: 'phase_01',
+    taskId: 'pre_006', categoryId: 'values_alignment', phaseId: 'phase_01',
     name: '婚前契約の話し合い', nameEn: 'Prenuptial Agreement Discussion',
     description: '資産・負債・生活費等について話し合い、必要に応じて契約書作成', descriptionEn: 'Discuss assets, debts, living expenses and create agreement if needed',
     recommendedTiming: '12ヶ月以上前', recommendedTimingEn: '12+ months before',
@@ -94,7 +94,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 300000,
   },
   {
-    taskId: 'pre_007', categoryId: 'pre_marriage', phaseId: 'phase_01',
+    taskId: 'pre_007', categoryId: 'finance_planning', phaseId: 'phase_01',
     name: '結婚資金の貯蓄計画', nameEn: 'Wedding Savings Plan',
     description: '結婚式・新生活に向けた貯蓄目標と計画を立てる', descriptionEn: 'Set savings goals and plan for wedding and new life expenses',
     recommendedTiming: '12ヶ月以上前', recommendedTimingEn: '12+ months before',
@@ -109,7 +109,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'pre_008', categoryId: 'pre_marriage', phaseId: 'phase_01',
+    taskId: 'pre_008', categoryId: 'engagement', phaseId: 'phase_02',
     name: '婚約記念写真の撮影', nameEn: 'Engagement Photo Shoot',
     description: '婚約記念のフォトセッションを実施', descriptionEn: 'Schedule and complete an engagement photo session',
     recommendedTiming: '12ヶ月以上前', recommendedTimingEn: '12+ months before',
@@ -124,7 +124,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 30000, budgetEstimateMax: 150000,
   },
   {
-    taskId: 'pre_009', categoryId: 'pre_marriage', phaseId: 'phase_01',
+    taskId: 'pre_009', categoryId: 'engagement', phaseId: 'phase_02',
     name: '結婚報告（職場・友人）', nameEn: 'Announce Engagement',
     description: '職場の上司や同僚、友人への結婚報告', descriptionEn: 'Inform workplace supervisors, colleagues, and friends',
     recommendedTiming: '12ヶ月以上前', recommendedTimingEn: '12+ months before',
@@ -138,9 +138,9 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     notesEn: ['Inform your boss in person', 'Easier to announce once the date is set'],
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
-  // ===== VENUE & PLANNING 式場・プランニング =====
+  // ===== CEREMONY 結婚式 =====
   {
-    taskId: 'venue_001', categoryId: 'venue_planning', phaseId: 'phase_02',
+    taskId: 'venue_001', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '結婚式のスタイル決定', nameEn: 'Decide Wedding Style',
     description: '神前式・教会式・人前式など挙式スタイルを決定', descriptionEn: 'Choose ceremony style: Shinto, Christian, secular, etc.',
     recommendedTiming: '12〜10ヶ月前', recommendedTimingEn: '12-10 months before',
@@ -155,7 +155,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'venue_002', categoryId: 'venue_planning', phaseId: 'phase_02',
+    taskId: 'venue_002', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '式場の情報収集・見学予約', nameEn: 'Research & Book Venue Tours',
     description: 'ブライダルフェアや式場見学の予約と参加', descriptionEn: 'Research venues and book bridal fair visits',
     recommendedTiming: '12〜10ヶ月前', recommendedTimingEn: '12-10 months before',
@@ -170,7 +170,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 5000,
   },
   {
-    taskId: 'venue_003', categoryId: 'venue_planning', phaseId: 'phase_03',
+    taskId: 'venue_003', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '式場の決定・契約', nameEn: 'Finalize Venue & Sign Contract',
     description: '会場を決定し、契約手続きを行う', descriptionEn: 'Select the venue and complete contract procedures',
     recommendedTiming: '10〜8ヶ月前', recommendedTimingEn: '10-8 months before',
@@ -185,7 +185,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 100000, budgetEstimateMax: 200000,
   },
   {
-    taskId: 'venue_004', categoryId: 'venue_planning', phaseId: 'phase_03',
+    taskId: 'venue_004', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ウェディングプランナーの選定', nameEn: 'Select Wedding Planner',
     description: '担当プランナーの確認または外部プランナーの手配', descriptionEn: 'Confirm assigned planner or hire an external one',
     recommendedTiming: '10〜8ヶ月前', recommendedTimingEn: '10-8 months before',
@@ -200,7 +200,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 300000,
   },
   {
-    taskId: 'venue_005', categoryId: 'venue_planning', phaseId: 'phase_03',
+    taskId: 'venue_005', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '挙式日・時間の確定', nameEn: 'Confirm Wedding Date & Time',
     description: '挙式の日程と時間帯を正式に決定', descriptionEn: 'Officially confirm the wedding date and time slot',
     recommendedTiming: '10〜8ヶ月前', recommendedTimingEn: '10-8 months before',
@@ -215,7 +215,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'venue_006', categoryId: 'venue_planning', phaseId: 'phase_03',
+    taskId: 'venue_006', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '結婚式のテーマ・コンセプト決定', nameEn: 'Decide Wedding Theme & Concept',
     description: '結婚式全体のテーマカラーやコンセプトを決める', descriptionEn: 'Choose the overall theme, color scheme, and concept',
     recommendedTiming: '10〜8ヶ月前', recommendedTimingEn: '10-8 months before',
@@ -230,7 +230,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'venue_007', categoryId: 'venue_planning', phaseId: 'phase_04',
+    taskId: 'venue_007', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ケータリング・料理の試食', nameEn: 'Catering Tasting',
     description: '披露宴の料理を試食し、メニューの方向性を決める', descriptionEn: 'Taste test reception food and decide on menu direction',
     recommendedTiming: '8〜6ヶ月前', recommendedTimingEn: '8-6 months before',
@@ -245,7 +245,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 10000,
   },
   {
-    taskId: 'venue_008', categoryId: 'venue_planning', phaseId: 'phase_04',
+    taskId: 'venue_008', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '二次会会場の手配', nameEn: 'Book After-Party Venue',
     description: '二次会を行う場合の会場選定と予約', descriptionEn: 'Select and book venue for the after-party if applicable',
     recommendedTiming: '8〜6ヶ月前', recommendedTimingEn: '8-6 months before',
@@ -259,9 +259,9 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     notesEn: ['Ask a trusted friend to organize', 'Consider access from reception venue'],
     budgetEstimateMin: 50000, budgetEstimateMax: 300000,
   },
-  // ===== GUESTS ゲスト関連 =====
+  // ===== CEREMONY (GUESTS) 結婚式（ゲスト関連） =====
   {
-    taskId: 'guest_001', categoryId: 'guests', phaseId: 'phase_02',
+    taskId: 'guest_001', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ゲストリストの作成', nameEn: 'Create Guest List',
     description: '招待するゲストのリストを両家で作成', descriptionEn: 'Draft guest list with both families',
     recommendedTiming: '12〜10ヶ月前', recommendedTimingEn: '12-10 months before',
@@ -277,7 +277,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'guest_002', categoryId: 'guests', phaseId: 'phase_04',
+    taskId: 'guest_002', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'Save the Date送付', nameEn: 'Send Save the Dates',
     description: '日程のお知らせカードを送付', descriptionEn: 'Send date announcement cards to guests',
     recommendedTiming: '8〜6ヶ月前', recommendedTimingEn: '8-6 months before',
@@ -292,7 +292,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 5000, budgetEstimateMax: 30000,
   },
   {
-    taskId: 'guest_003', categoryId: 'guests', phaseId: 'phase_05',
+    taskId: 'guest_003', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '招待状のデザイン・印刷', nameEn: 'Design & Print Invitations',
     description: '招待状のデザイン決定、印刷、宛名書き', descriptionEn: 'Design, print, and address wedding invitations',
     recommendedTiming: '6〜4ヶ月前', recommendedTimingEn: '6-4 months before',
@@ -308,7 +308,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 20000, budgetEstimateMax: 80000,
   },
   {
-    taskId: 'guest_004', categoryId: 'guests', phaseId: 'phase_05',
+    taskId: 'guest_004', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '招待状の発送', nameEn: 'Mail Invitations',
     description: '招待状を発送し、返信を管理', descriptionEn: 'Mail invitations and track responses',
     recommendedTiming: '4〜3ヶ月前', recommendedTimingEn: '4-3 months before',
@@ -323,7 +323,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 5000, budgetEstimateMax: 15000,
   },
   {
-    taskId: 'guest_005', categoryId: 'guests', phaseId: 'phase_06',
+    taskId: 'guest_005', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '出欠確認・最終人数確定', nameEn: 'Confirm RSVPs & Final Count',
     description: '返信を集計し、最終出席人数を確定', descriptionEn: 'Tally responses and confirm final headcount',
     recommendedTiming: '4〜2ヶ月前', recommendedTimingEn: '4-2 months before',
@@ -338,7 +338,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'guest_006', categoryId: 'guests', phaseId: 'phase_06',
+    taskId: 'guest_006', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '席次表の作成', nameEn: 'Create Seating Chart',
     description: '披露宴の席次を決定し、席次表を作成', descriptionEn: 'Determine seating arrangement and create chart',
     recommendedTiming: '4〜2ヶ月前', recommendedTimingEn: '4-2 months before',
@@ -353,7 +353,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 10000, budgetEstimateMax: 30000,
   },
   {
-    taskId: 'guest_007', categoryId: 'guests', phaseId: 'phase_06',
+    taskId: 'guest_007', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'お車代・宿泊の手配', nameEn: 'Arrange Guest Travel & Accommodation',
     description: '遠方ゲストの交通費負担と宿泊手配', descriptionEn: 'Arrange travel subsidies and hotel bookings for distant guests',
     recommendedTiming: '4〜2ヶ月前', recommendedTimingEn: '4-2 months before',
@@ -368,7 +368,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 50000, budgetEstimateMax: 300000,
   },
   {
-    taskId: 'guest_008', categoryId: 'guests', phaseId: 'phase_07',
+    taskId: 'guest_008', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ゲストへの最終案内', nameEn: 'Send Final Guest Info',
     description: '会場アクセス、当日スケジュール等の最終案内', descriptionEn: 'Send final details: venue access, schedule, dress code',
     recommendedTiming: '2〜1ヶ月前', recommendedTimingEn: '2-1 months before',
@@ -382,9 +382,9 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     notesEn: ['Include parking info', 'Specify dress code if applicable'],
     budgetEstimateMin: 0, budgetEstimateMax: 5000,
   },
-  // ===== ATTIRE & BEAUTY 衣装・美容 =====
+  // ===== CEREMONY (ATTIRE) 結婚式（衣装・美容） =====
   {
-    taskId: 'attire_001', categoryId: 'attire_beauty', phaseId: 'phase_03',
+    taskId: 'attire_001', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ウェディングドレスの選定', nameEn: 'Select Wedding Dress',
     description: 'ドレスショップでの試着と選定', descriptionEn: 'Try on and select the wedding dress at bridal shops',
     recommendedTiming: '10〜8ヶ月前', recommendedTimingEn: '10-8 months before',
@@ -399,7 +399,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 200000, budgetEstimateMax: 500000,
   },
   {
-    taskId: 'attire_002', categoryId: 'attire_beauty', phaseId: 'phase_03',
+    taskId: 'attire_002', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'タキシード・紋付袴の選定', nameEn: 'Select Groom\'s Attire',
     description: '新郎の衣装を選定', descriptionEn: 'Select groom\'s tuxedo or traditional hakama',
     recommendedTiming: '10〜8ヶ月前', recommendedTimingEn: '10-8 months before',
@@ -414,7 +414,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 50000, budgetEstimateMax: 200000,
   },
   {
-    taskId: 'attire_003', categoryId: 'attire_beauty', phaseId: 'phase_05',
+    taskId: 'attire_003', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ブライダルエステの開始', nameEn: 'Start Bridal Beauty Treatments',
     description: 'フェイシャル・ボディケアなどのブライダルエステを開始', descriptionEn: 'Begin bridal facial and body beauty treatments',
     recommendedTiming: '6〜4ヶ月前', recommendedTimingEn: '6-4 months before',
@@ -429,7 +429,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 30000, budgetEstimateMax: 200000,
   },
   {
-    taskId: 'attire_004', categoryId: 'attire_beauty', phaseId: 'phase_06',
+    taskId: 'attire_004', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ヘアメイクリハーサル', nameEn: 'Hair & Makeup Trial',
     description: '当日のヘアスタイルとメイクのリハーサル', descriptionEn: 'Trial run of wedding day hair and makeup',
     recommendedTiming: '4〜2ヶ月前', recommendedTimingEn: '4-2 months before',
@@ -444,7 +444,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 10000, budgetEstimateMax: 30000,
   },
   {
-    taskId: 'attire_005', categoryId: 'attire_beauty', phaseId: 'phase_05',
+    taskId: 'attire_005', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'アクセサリー・小物の選定', nameEn: 'Select Accessories',
     description: 'ティアラ、ベール、靴、アクセサリーなどの選定', descriptionEn: 'Choose tiara, veil, shoes, and accessories',
     recommendedTiming: '6〜4ヶ月前', recommendedTimingEn: '6-4 months before',
@@ -460,7 +460,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 20000, budgetEstimateMax: 100000,
   },
   {
-    taskId: 'attire_006', categoryId: 'attire_beauty', phaseId: 'phase_07',
+    taskId: 'attire_006', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ネイルアートの予約', nameEn: 'Book Nail Art',
     description: '挙式用ネイルの予約と施術', descriptionEn: 'Book and complete wedding nail art',
     recommendedTiming: '2〜1ヶ月前', recommendedTimingEn: '2-1 months before',
@@ -475,7 +475,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 5000, budgetEstimateMax: 20000,
   },
   {
-    taskId: 'attire_007', categoryId: 'attire_beauty', phaseId: 'phase_06',
+    taskId: 'attire_007', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ドレスフィッティング（最終）', nameEn: 'Final Dress Fitting',
     description: '体型に合わせた最終フィッティング', descriptionEn: 'Final fitting adjusted to current body measurements',
     recommendedTiming: '4〜2ヶ月前', recommendedTimingEn: '4-2 months before',
@@ -489,9 +489,9 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     notesEn: ['Bring bridal undergarments', 'Practice walking and sitting'],
     budgetEstimateMin: 0, budgetEstimateMax: 30000,
   },
-  // ===== CEREMONY DAY 式当日の準備 =====
+  // ===== CEREMONY (DAY-OF) 結婚式（式当日の準備） =====
   {
-    taskId: 'ceremony_001', categoryId: 'ceremony_day', phaseId: 'phase_04',
+    taskId: 'ceremony_001', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '挙式プログラムの作成', nameEn: 'Create Ceremony Program',
     description: '挙式の進行プログラムを作成', descriptionEn: 'Create the ceremony order of events',
     recommendedTiming: '8〜6ヶ月前', recommendedTimingEn: '8-6 months before',
@@ -506,7 +506,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 5000, budgetEstimateMax: 30000,
   },
   {
-    taskId: 'ceremony_002', categoryId: 'ceremony_day', phaseId: 'phase_04',
+    taskId: 'ceremony_002', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '誓いの言葉の作成', nameEn: 'Write Vows',
     description: 'オリジナルの誓いの言葉を作成', descriptionEn: 'Write personal wedding vows',
     recommendedTiming: '8〜6ヶ月前', recommendedTimingEn: '8-6 months before',
@@ -521,7 +521,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'ceremony_003', categoryId: 'ceremony_day', phaseId: 'phase_05',
+    taskId: 'ceremony_003', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'フラワーアレンジメントの決定', nameEn: 'Decide Flower Arrangements',
     description: 'ブーケ、会場装花、テーブルフラワーの決定', descriptionEn: 'Choose bouquet, venue flowers, and table centerpieces',
     recommendedTiming: '6〜4ヶ月前', recommendedTimingEn: '6-4 months before',
@@ -536,7 +536,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 100000, budgetEstimateMax: 400000,
   },
   {
-    taskId: 'ceremony_004', categoryId: 'ceremony_day', phaseId: 'phase_05',
+    taskId: 'ceremony_004', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ウェディングケーキの選定', nameEn: 'Select Wedding Cake',
     description: 'ウェディングケーキのデザインと注文', descriptionEn: 'Choose wedding cake design and place order',
     recommendedTiming: '6〜4ヶ月前', recommendedTimingEn: '6-4 months before',
@@ -551,7 +551,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 30000, budgetEstimateMax: 100000,
   },
   {
-    taskId: 'ceremony_005', categoryId: 'ceremony_day', phaseId: 'phase_05',
+    taskId: 'ceremony_005', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '披露宴の料理メニュー確定', nameEn: 'Finalize Reception Menu',
     description: '披露宴のコース料理を最終決定', descriptionEn: 'Finalize the reception dinner course menu',
     recommendedTiming: '6〜4ヶ月前', recommendedTimingEn: '6-4 months before',
@@ -566,7 +566,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 800000, budgetEstimateMax: 2000000,
   },
   {
-    taskId: 'ceremony_006', categoryId: 'ceremony_day', phaseId: 'phase_05',
+    taskId: 'ceremony_006', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '音楽・BGMの選定', nameEn: 'Select Music & BGM',
     description: '挙式・披露宴で使用する音楽を選定', descriptionEn: 'Choose music for ceremony and reception',
     recommendedTiming: '6〜4ヶ月前', recommendedTimingEn: '6-4 months before',
@@ -582,7 +582,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 10000, budgetEstimateMax: 50000,
   },
   {
-    taskId: 'ceremony_007', categoryId: 'ceremony_day', phaseId: 'phase_05',
+    taskId: 'ceremony_007', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '司会者（MC）の選定', nameEn: 'Select MC/Host',
     description: '披露宴の司会者を選定・依頼', descriptionEn: 'Select and book the reception MC/host',
     recommendedTiming: '6〜4ヶ月前', recommendedTimingEn: '6-4 months before',
@@ -597,7 +597,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 30000, budgetEstimateMax: 100000,
   },
   {
-    taskId: 'ceremony_008', categoryId: 'ceremony_day', phaseId: 'phase_06',
+    taskId: 'ceremony_008', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '引出物・プチギフトの選定', nameEn: 'Select Return Gifts & Favors',
     description: '引出物、引菓子、プチギフトの選定と発注', descriptionEn: 'Choose and order return gifts and wedding favors',
     recommendedTiming: '4〜2ヶ月前', recommendedTimingEn: '4-2 months before',
@@ -613,7 +613,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 100000, budgetEstimateMax: 500000,
   },
   {
-    taskId: 'ceremony_009', categoryId: 'ceremony_day', phaseId: 'phase_06',
+    taskId: 'ceremony_009', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '結婚指輪の購入', nameEn: 'Purchase Wedding Rings',
     description: '結婚指輪のデザイン選定・注文', descriptionEn: 'Select and order wedding bands',
     recommendedTiming: '4〜2ヶ月前', recommendedTimingEn: '4-2 months before',
@@ -629,7 +629,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 100000, budgetEstimateMax: 400000,
   },
   {
-    taskId: 'ceremony_010', categoryId: 'ceremony_day', phaseId: 'phase_06',
+    taskId: 'ceremony_010', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'テーブルコーディネートの決定', nameEn: 'Decide Table Coordination',
     description: 'テーブルクロス、ナプキン、装飾の決定', descriptionEn: 'Choose tablecloths, napkins, and table decorations',
     recommendedTiming: '4〜2ヶ月前', recommendedTimingEn: '4-2 months before',
@@ -644,7 +644,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 20000, budgetEstimateMax: 80000,
   },
   {
-    taskId: 'ceremony_011', categoryId: 'ceremony_day', phaseId: 'phase_07',
+    taskId: 'ceremony_011', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '進行表の最終確認', nameEn: 'Final Schedule Review',
     description: '挙式・披露宴の最終タイムスケジュールを確定', descriptionEn: 'Finalize ceremony and reception timeline',
     recommendedTiming: '2〜1ヶ月前', recommendedTimingEn: '2-1 months before',
@@ -659,7 +659,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'ceremony_012', categoryId: 'ceremony_day', phaseId: 'phase_08',
+    taskId: 'ceremony_012', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '当日持ち物の準備', nameEn: 'Pack Day-of Essentials',
     description: '挙式当日に必要な持ち物を準備', descriptionEn: 'Prepare all items needed on the wedding day',
     recommendedTiming: '1週間前', recommendedTimingEn: '1 week before',
@@ -675,9 +675,9 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     notesEn: ['Use a checklist to verify', 'Don\'t forget spare stockings'],
     budgetEstimateMin: 5000, budgetEstimateMax: 20000,
   },
-  // ===== PHOTO & VIDEO 写真・映像 =====
+  // ===== CEREMONY (PHOTO & VIDEO) 結婚式（写真・映像） =====
   {
-    taskId: 'photo_001', categoryId: 'photo_video', phaseId: 'phase_03',
+    taskId: 'photo_001', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'フォトグラファーの予約', nameEn: 'Book Photographer',
     description: '挙式・披露宴のカメラマンを選定・予約', descriptionEn: 'Select and book wedding photographer',
     recommendedTiming: '10〜8ヶ月前', recommendedTimingEn: '10-8 months before',
@@ -692,7 +692,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 100000, budgetEstimateMax: 400000,
   },
   {
-    taskId: 'photo_002', categoryId: 'photo_video', phaseId: 'phase_03',
+    taskId: 'photo_002', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ビデオグラファーの予約', nameEn: 'Book Videographer',
     description: '挙式・披露宴の映像撮影を手配', descriptionEn: 'Arrange wedding video recording',
     recommendedTiming: '10〜8ヶ月前', recommendedTimingEn: '10-8 months before',
@@ -707,7 +707,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 100000, budgetEstimateMax: 300000,
   },
   {
-    taskId: 'photo_003', categoryId: 'photo_video', phaseId: 'phase_07',
+    taskId: 'photo_003', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '撮影ショットリストの作成', nameEn: 'Create Shot List',
     description: '撮影してほしいシーンやカットをリスト化', descriptionEn: 'List must-have photos and video shots',
     recommendedTiming: '2〜1ヶ月前', recommendedTimingEn: '2-1 months before',
@@ -722,7 +722,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'photo_004', categoryId: 'photo_video', phaseId: 'phase_05',
+    taskId: 'photo_004', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'フォトブース・プロップスの準備', nameEn: 'Prepare Photo Booth & Props',
     description: '披露宴会場にフォトブースとプロップスを準備', descriptionEn: 'Set up photo booth area with fun props at reception',
     recommendedTiming: '6〜4ヶ月前', recommendedTimingEn: '6-4 months before',
@@ -737,7 +737,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 10000, budgetEstimateMax: 50000,
   },
   {
-    taskId: 'photo_005', categoryId: 'photo_video', phaseId: 'phase_04',
+    taskId: 'photo_005', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'プロフィールムービーの制作', nameEn: 'Create Profile Movie',
     description: '二人の出会いから婚約までのプロフィールムービーを制作', descriptionEn: 'Produce a profile video from first meeting to engagement',
     recommendedTiming: '8〜6ヶ月前', recommendedTimingEn: '8-6 months before',
@@ -751,9 +751,9 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     notesEn: ['DIY is free; professional ¥30,000-100,000', 'Aim for 5-8 minutes'],
     budgetEstimateMin: 0, budgetEstimateMax: 100000,
   },
-  // ===== LEGAL 法的手続き =====
+  // ===== LEGAL PROCEDURES 入籍・法的手続き =====
   {
-    taskId: 'legal_001', categoryId: 'legal', phaseId: 'phase_07',
+    taskId: 'legal_001', categoryId: 'legal_procedures', phaseId: 'phase_06',
     name: '婚姻届の準備', nameEn: 'Prepare Marriage Registration',
     description: '婚姻届の入手、記入、証人の手配', descriptionEn: 'Obtain, fill out marriage registration form and arrange witnesses',
     recommendedTiming: '2〜1ヶ月前', recommendedTimingEn: '2-1 months before',
@@ -769,7 +769,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 500, budgetEstimateMax: 2000,
   },
   {
-    taskId: 'legal_002', categoryId: 'legal', phaseId: 'phase_09',
+    taskId: 'legal_002', categoryId: 'legal_procedures', phaseId: 'phase_06',
     name: '婚姻届の提出', nameEn: 'Submit Marriage Registration',
     description: '婚姻届を役所に提出', descriptionEn: 'Submit marriage registration to city/ward office',
     recommendedTiming: '挙式当日', recommendedTimingEn: 'Wedding day',
@@ -783,7 +783,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 500,
   },
   {
-    taskId: 'legal_003', categoryId: 'legal', phaseId: 'phase_10',
+    taskId: 'legal_003', categoryId: 'legal_procedures', phaseId: 'phase_08',
     name: '氏名変更手続き', nameEn: 'Name Change Procedures',
     description: '姓が変わる場合の各種名義変更手続き', descriptionEn: 'Complete name change procedures if surname changes',
     recommendedTiming: '挙式後2週間以内', recommendedTimingEn: 'Within 2 weeks after wedding',
@@ -801,7 +801,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 5000, budgetEstimateMax: 30000,
   },
   {
-    taskId: 'legal_004', categoryId: 'legal', phaseId: 'phase_10',
+    taskId: 'legal_004', categoryId: 'legal_procedures', phaseId: 'phase_08',
     name: '保険・年金の変更手続き', nameEn: 'Update Insurance & Pension',
     description: '健康保険・年金の氏名・住所変更手続き', descriptionEn: 'Update health insurance and pension records',
     recommendedTiming: '挙式後1ヶ月以内', recommendedTimingEn: 'Within 1 month after wedding',
@@ -816,7 +816,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'legal_005', categoryId: 'legal', phaseId: 'phase_10',
+    taskId: 'legal_005', categoryId: 'legal_procedures', phaseId: 'phase_09',
     name: '税金・確定申告の確認', nameEn: 'Check Tax Filing Changes',
     description: '結婚による税金面の変更点を確認', descriptionEn: 'Review tax implications of marriage',
     recommendedTiming: '挙式後', recommendedTimingEn: 'After wedding',
@@ -830,9 +830,9 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     notesEn: ['Spousal deduction may reduce taxes', 'Mid-year marriage reflected in year-end adjustment'],
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
-  // ===== NEW LIFE 新生活準備 =====
+  // ===== HOUSING / FINANCE / LIFESTYLE 住まい・資金・新生活 =====
   {
-    taskId: 'life_001', categoryId: 'new_life', phaseId: 'phase_04',
+    taskId: 'life_001', categoryId: 'housing', phaseId: 'phase_04',
     name: '新居探し', nameEn: 'Find New Home',
     description: '二人で住む新居を探し、契約する', descriptionEn: 'Search for and sign lease on a new home together',
     recommendedTiming: '8〜6ヶ月前', recommendedTimingEn: '8-6 months before',
@@ -847,7 +847,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 300000, budgetEstimateMax: 1000000,
   },
   {
-    taskId: 'life_002', categoryId: 'new_life', phaseId: 'phase_05',
+    taskId: 'life_002', categoryId: 'housing', phaseId: 'phase_07',
     name: '家具・家電の購入', nameEn: 'Buy Furniture & Appliances',
     description: '新生活に必要な家具と家電を購入', descriptionEn: 'Purchase furniture and appliances for new home',
     recommendedTiming: '6〜4ヶ月前', recommendedTimingEn: '6-4 months before',
@@ -862,7 +862,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 300000, budgetEstimateMax: 1500000,
   },
   {
-    taskId: 'life_003', categoryId: 'new_life', phaseId: 'phase_06',
+    taskId: 'life_003', categoryId: 'housing', phaseId: 'phase_07',
     name: '引越しの手配', nameEn: 'Arrange Moving',
     description: '引越し業者の選定と引越し作業', descriptionEn: 'Select moving company and complete the move',
     recommendedTiming: '4〜2ヶ月前', recommendedTimingEn: '4-2 months before',
@@ -878,7 +878,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 30000, budgetEstimateMax: 200000,
   },
   {
-    taskId: 'life_004', categoryId: 'new_life', phaseId: 'phase_04',
+    taskId: 'life_004', categoryId: 'finance_planning', phaseId: 'phase_04',
     name: '家計の話し合い', nameEn: 'Discuss Household Finances',
     description: '新生活の家計管理方法について話し合い', descriptionEn: 'Discuss how to manage household finances together',
     recommendedTiming: '8〜6ヶ月前', recommendedTimingEn: '8-6 months before',
@@ -894,7 +894,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'life_005', categoryId: 'new_life', phaseId: 'phase_05',
+    taskId: 'life_005', categoryId: 'life_planning', phaseId: 'phase_07',
     name: '生命保険・医療保険の見直し', nameEn: 'Review Life & Medical Insurance',
     description: '結婚に伴う保険の見直しと加入', descriptionEn: 'Review and update insurance coverage for married life',
     recommendedTiming: '6〜4ヶ月前', recommendedTimingEn: '6-4 months before',
@@ -908,9 +908,9 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     notesEn: ['Change beneficiaries after marriage', 'Consider consulting a financial planner'],
     budgetEstimateMin: 0, budgetEstimateMax: 30000,
   },
-  // ===== POST-WEDDING 結婚式後 =====
+  // ===== LIFESTYLE SETUP 新生活の立ち上げ =====
   {
-    taskId: 'post_001', categoryId: 'post_wedding', phaseId: 'phase_10',
+    taskId: 'post_001', categoryId: 'lifestyle_setup', phaseId: 'phase_08',
     name: 'お礼状・年賀状の発送', nameEn: 'Send Thank You Cards',
     description: '参列者への感謝状の作成と発送', descriptionEn: 'Create and send thank you cards to attendees',
     recommendedTiming: '挙式後1ヶ月以内', recommendedTimingEn: 'Within 1 month after wedding',
@@ -925,7 +925,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 10000, budgetEstimateMax: 40000,
   },
   {
-    taskId: 'post_002', categoryId: 'post_wedding', phaseId: 'phase_10',
+    taskId: 'post_002', categoryId: 'lifestyle_setup', phaseId: 'phase_08',
     name: '結婚式アルバムの作成', nameEn: 'Create Wedding Album',
     description: '挙式写真を整理し、アルバムを作成', descriptionEn: 'Organize wedding photos and create album',
     recommendedTiming: '挙式後2ヶ月以内', recommendedTimingEn: 'Within 2 months after wedding',
@@ -941,7 +941,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 20000, budgetEstimateMax: 100000,
   },
   {
-    taskId: 'post_003', categoryId: 'post_wedding', phaseId: 'phase_10',
+    taskId: 'post_003', categoryId: 'lifestyle_setup', phaseId: 'phase_08',
     name: 'ご祝儀の整理・お返し', nameEn: 'Organize Gifts & Send Returns',
     description: 'いただいたご祝儀・お祝いの整理と内祝いの手配', descriptionEn: 'Organize received gifts and send return gifts (uchiiwai)',
     recommendedTiming: '挙式後1ヶ月以内', recommendedTimingEn: 'Within 1 month after wedding',
@@ -956,7 +956,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 50000, budgetEstimateMax: 300000,
   },
   {
-    taskId: 'post_004', categoryId: 'post_wedding', phaseId: 'phase_10',
+    taskId: 'post_004', categoryId: 'lifestyle_setup', phaseId: 'phase_08',
     name: 'ハネムーンの計画・実行', nameEn: 'Plan & Take Honeymoon',
     description: '新婚旅行の計画と実行', descriptionEn: 'Plan and go on honeymoon trip',
     recommendedTiming: '挙式後', recommendedTimingEn: 'After wedding',
@@ -972,7 +972,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 300000, budgetEstimateMax: 2000000,
   },
   {
-    taskId: 'post_005', categoryId: 'post_wedding', phaseId: 'phase_10',
+    taskId: 'post_005', categoryId: 'lifestyle_setup', phaseId: 'phase_08',
     name: '結婚式費用の精算', nameEn: 'Settle Wedding Expenses',
     description: '挙式・披露宴の最終費用を精算', descriptionEn: 'Finalize and settle all wedding-related expenses',
     recommendedTiming: '挙式後1週間以内', recommendedTimingEn: 'Within 1 week after wedding',
@@ -988,7 +988,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'post_006', categoryId: 'post_wedding', phaseId: 'phase_10',
+    taskId: 'post_006', categoryId: 'lifestyle_setup', phaseId: 'phase_08',
     name: '結婚報告の発送', nameEn: 'Send Marriage Announcements',
     description: '招待できなかった方への結婚報告', descriptionEn: 'Send marriage announcements to those not invited',
     recommendedTiming: '挙式後1ヶ月以内', recommendedTimingEn: 'Within 1 month after wedding',
@@ -1004,7 +1004,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
   },
   // ===== Additional tasks across categories =====
   {
-    taskId: 'venue_009', categoryId: 'venue_planning', phaseId: 'phase_07',
+    taskId: 'venue_009', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '最終打ち合わせ（会場）', nameEn: 'Final Meeting with Venue',
     description: '会場スタッフとの最終確認打ち合わせ', descriptionEn: 'Final review meeting with venue staff',
     recommendedTiming: '2〜1ヶ月前', recommendedTimingEn: '2-1 months before',
@@ -1019,7 +1019,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'venue_010', categoryId: 'venue_planning', phaseId: 'phase_08',
+    taskId: 'venue_010', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'リハーサル', nameEn: 'Wedding Rehearsal',
     description: '挙式のリハーサルを実施', descriptionEn: 'Conduct wedding ceremony rehearsal',
     recommendedTiming: '前日〜当日朝', recommendedTimingEn: 'Day before or morning of',
@@ -1034,7 +1034,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'ceremony_013', categoryId: 'ceremony_day', phaseId: 'phase_06',
+    taskId: 'ceremony_013', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'スピーチ・余興の依頼', nameEn: 'Request Speeches & Entertainment',
     description: '主賓スピーチや余興をゲストに依頼', descriptionEn: 'Request speeches and entertainment from guests',
     recommendedTiming: '4〜2ヶ月前', recommendedTimingEn: '4-2 months before',
@@ -1049,7 +1049,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 10000, budgetEstimateMax: 50000,
   },
   {
-    taskId: 'ceremony_014', categoryId: 'ceremony_day', phaseId: 'phase_06',
+    taskId: 'ceremony_014', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ペーパーアイテムの制作', nameEn: 'Create Paper Items',
     description: 'メニュー表、席札、プロフィールカード等の制作', descriptionEn: 'Create menu cards, place cards, profile cards',
     recommendedTiming: '4〜2ヶ月前', recommendedTimingEn: '4-2 months before',
@@ -1064,7 +1064,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 10000, budgetEstimateMax: 50000,
   },
   {
-    taskId: 'guest_009', categoryId: 'guests', phaseId: 'phase_05',
+    taskId: 'guest_009', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '受付係・会計係の依頼', nameEn: 'Assign Reception & Accounting Staff',
     description: '当日の受付と会計を担当するゲストに依頼', descriptionEn: 'Ask guests to handle reception desk and accounting',
     recommendedTiming: '6〜4ヶ月前', recommendedTimingEn: '6-4 months before',
@@ -1079,7 +1079,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 5000, budgetEstimateMax: 15000,
   },
   {
-    taskId: 'attire_008', categoryId: 'attire_beauty', phaseId: 'phase_05',
+    taskId: 'attire_008', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ダイエット・フィットネスプラン', nameEn: 'Diet & Fitness Plan',
     description: '挙式に向けた体型管理プランの実行', descriptionEn: 'Execute a fitness plan for the wedding',
     recommendedTiming: '6〜4ヶ月前', recommendedTimingEn: '6-4 months before',
@@ -1094,7 +1094,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 100000,
   },
   {
-    taskId: 'life_006', categoryId: 'new_life', phaseId: 'phase_06',
+    taskId: 'life_006', categoryId: 'legal_procedures', phaseId: 'phase_07',
     name: '転居届・住所変更', nameEn: 'Submit Change of Address',
     description: '引越しに伴う転居届と各種住所変更', descriptionEn: 'Submit change of address notifications',
     recommendedTiming: '引越し前後', recommendedTimingEn: 'Around moving time',
@@ -1110,7 +1110,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 5000,
   },
   {
-    taskId: 'photo_006', categoryId: 'photo_video', phaseId: 'phase_05',
+    taskId: 'photo_006', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ウェルカムボードの制作', nameEn: 'Create Welcome Board',
     description: '披露宴の入口に設置するウェルカムボードの制作', descriptionEn: 'Create welcome board for reception entrance',
     recommendedTiming: '6〜4ヶ月前', recommendedTimingEn: '6-4 months before',
@@ -1125,7 +1125,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 3000, budgetEstimateMax: 30000,
   },
   {
-    taskId: 'ceremony_015', categoryId: 'ceremony_day', phaseId: 'phase_08',
+    taskId: 'ceremony_015', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'お車代・心付けの準備', nameEn: 'Prepare Stipends & Tips',
     description: '当日のお車代、心付けの封筒と金額を準備', descriptionEn: 'Prepare envelopes with travel stipends and gratuities',
     recommendedTiming: '1週間前', recommendedTimingEn: '1 week before',
@@ -1140,7 +1140,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 30000, budgetEstimateMax: 100000,
   },
   {
-    taskId: 'post_007', categoryId: 'post_wedding', phaseId: 'phase_10',
+    taskId: 'post_007', categoryId: 'lifestyle_setup', phaseId: 'phase_08',
     name: 'ウェディング映像の編集・受取', nameEn: 'Receive & Review Wedding Video',
     description: '挙式映像の編集版を受け取り確認', descriptionEn: 'Receive edited wedding video and review',
     recommendedTiming: '挙式後1-3ヶ月', recommendedTimingEn: '1-3 months after wedding',
@@ -1155,7 +1155,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'pre_010', categoryId: 'pre_marriage', phaseId: 'phase_02',
+    taskId: 'pre_010', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ブライダル保険の加入', nameEn: 'Get Bridal Insurance',
     description: '結婚式のキャンセルや延期に備えた保険', descriptionEn: 'Insurance for wedding cancellation or postponement',
     recommendedTiming: '12〜10ヶ月前', recommendedTimingEn: '12-10 months before',
@@ -1170,9 +1170,9 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 10000, budgetEstimateMax: 30000,
   },
 
-  // ===== ADDITIONAL TASKS (pre_marriage) =====
+  // ===== ADDITIONAL TASKS (ceremony - from pre_marriage) =====
   {
-    taskId: 'pre_011', categoryId: 'pre_marriage', phaseId: 'phase_01',
+    taskId: 'pre_011', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '結婚式場の口コミリサーチ', nameEn: 'Research Wedding Venue Reviews',
     description: 'ネットやSNSで結婚式場の口コミ・評判を調査', descriptionEn: 'Research wedding venue reviews and ratings online and on social media',
     recommendedTiming: '12ヶ月以上前', recommendedTimingEn: '12+ months before',
@@ -1188,7 +1188,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'pre_012', categoryId: 'pre_marriage', phaseId: 'phase_01',
+    taskId: 'pre_012', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ブライダルカウンターへの相談', nameEn: 'Visit Bridal Counter for Consultation',
     description: 'ブライダルカウンター（相談所）で専門スタッフに式場・プランを相談', descriptionEn: 'Consult with bridal counter specialists about venues and plans',
     recommendedTiming: '12ヶ月以上前', recommendedTimingEn: '12+ months before',
@@ -1203,7 +1203,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'pre_013', categoryId: 'pre_marriage', phaseId: 'phase_02',
+    taskId: 'pre_013', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '結婚式のテーマ・コンセプト決定', nameEn: 'Decide Wedding Theme & Concept',
     description: '結婚式全体のテーマ、カラー、雰囲気を決める', descriptionEn: 'Decide on the overall theme, color scheme, and atmosphere of the wedding',
     recommendedTiming: '10〜12ヶ月前', recommendedTimingEn: '10-12 months before',
@@ -1218,9 +1218,9 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
 
-  // ===== ADDITIONAL TASKS (venue_planning) =====
+  // ===== ADDITIONAL TASKS (ceremony - venues) =====
   {
-    taskId: 'venue_011', categoryId: 'venue_planning', phaseId: 'phase_04',
+    taskId: 'venue_011', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ウェディングサイト/アプリの作成', nameEn: 'Create Wedding Website / App',
     description: '招待ゲスト向けのウェディングサイトまたはアプリを作成', descriptionEn: 'Build a wedding website or app for invited guests',
     recommendedTiming: '6〜8ヶ月前', recommendedTimingEn: '6-8 months before',
@@ -1236,7 +1236,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 30000,
   },
   {
-    taskId: 'venue_012', categoryId: 'venue_planning', phaseId: 'phase_06',
+    taskId: 'venue_012', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '会場の装飾小物の手配', nameEn: 'Arrange Venue Decoration Items',
     description: 'テーブルナンバー、キャンドル、小物等の装飾アイテムを手配', descriptionEn: 'Arrange decorative items such as table numbers, candles, and accessories',
     recommendedTiming: '3〜4ヶ月前', recommendedTimingEn: '3-4 months before',
@@ -1252,7 +1252,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 10000, budgetEstimateMax: 100000,
   },
   {
-    taskId: 'venue_013', categoryId: 'venue_planning', phaseId: 'phase_07',
+    taskId: 'venue_013', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '送迎バスの手配', nameEn: 'Arrange Shuttle Bus Service',
     description: 'ゲストの最寄り駅〜会場間の送迎バスを手配', descriptionEn: 'Arrange shuttle bus between nearest station and venue for guests',
     recommendedTiming: '2〜3ヶ月前', recommendedTimingEn: '2-3 months before',
@@ -1268,7 +1268,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 30000, budgetEstimateMax: 100000,
   },
   {
-    taskId: 'venue_014', categoryId: 'venue_planning', phaseId: 'phase_05',
+    taskId: 'venue_014', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ウェルカムスペースの企画', nameEn: 'Plan Welcome Space',
     description: 'ゲストを迎えるウェルカムスペースの装飾とコンテンツを企画', descriptionEn: 'Plan decorations and content for the welcome space to greet guests',
     recommendedTiming: '4〜5ヶ月前', recommendedTimingEn: '4-5 months before',
@@ -1283,7 +1283,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 5000, budgetEstimateMax: 50000,
   },
   {
-    taskId: 'venue_015', categoryId: 'venue_planning', phaseId: 'phase_06',
+    taskId: 'venue_015', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ウェディングケーキの選定', nameEn: 'Select Wedding Cake',
     description: 'ウェディングケーキのデザイン・味・サイズを決定', descriptionEn: 'Decide on the design, flavor, and size of the wedding cake',
     recommendedTiming: '3〜4ヶ月前', recommendedTimingEn: '3-4 months before',
@@ -1298,9 +1298,9 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 10000, budgetEstimateMax: 80000,
   },
 
-  // ===== ADDITIONAL TASKS (guests) =====
+  // ===== ADDITIONAL TASKS (ceremony - guests) =====
   {
-    taskId: 'guest_010', categoryId: 'guests', phaseId: 'phase_06',
+    taskId: 'guest_010', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ゲストブック準備', nameEn: 'Prepare Guest Book',
     description: 'ゲストに記帳してもらうゲストブック（芳名帳）を準備', descriptionEn: 'Prepare a guest book for attendees to sign and leave messages',
     recommendedTiming: '3〜4ヶ月前', recommendedTimingEn: '3-4 months before',
@@ -1315,7 +1315,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 2000, budgetEstimateMax: 15000,
   },
   {
-    taskId: 'guest_011', categoryId: 'guests', phaseId: 'phase_06',
+    taskId: 'guest_011', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '子供ゲストへの対応準備', nameEn: 'Prepare for Child Guests',
     description: '子連れゲスト向けのキッズスペースやアメニティを準備', descriptionEn: 'Prepare kids space, activities, and amenities for guests with children',
     recommendedTiming: '3〜4ヶ月前', recommendedTimingEn: '3-4 months before',
@@ -1331,7 +1331,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 3000, budgetEstimateMax: 20000,
   },
   {
-    taskId: 'guest_012', categoryId: 'guests', phaseId: 'phase_07',
+    taskId: 'guest_012', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ご祝儀袋・芳名帳の準備', nameEn: 'Prepare Gift Money Envelopes & Sign-in Sheet',
     description: '受付でのご祝儀受け取り用の準備とお釣り用意', descriptionEn: 'Prepare reception materials for receiving monetary gifts and making change',
     recommendedTiming: '2〜3ヶ月前', recommendedTimingEn: '2-3 months before',
@@ -1346,7 +1346,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 2000, budgetEstimateMax: 10000,
   },
   {
-    taskId: 'guest_013', categoryId: 'guests', phaseId: 'phase_07',
+    taskId: 'guest_013', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '遠方ゲストの宿泊手配', nameEn: 'Arrange Accommodation for Out-of-Town Guests',
     description: '遠方から来るゲストの宿泊先を確保・案内', descriptionEn: 'Secure and inform about accommodation for guests traveling from afar',
     recommendedTiming: '2〜3ヶ月前', recommendedTimingEn: '2-3 months before',
@@ -1362,9 +1362,9 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 200000,
   },
 
-  // ===== ADDITIONAL TASKS (attire_beauty) =====
+  // ===== ADDITIONAL TASKS (ceremony - attire) =====
   {
-    taskId: 'attire_009', categoryId: 'attire_beauty', phaseId: 'phase_04',
+    taskId: 'attire_009', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '和装（白無垢・色打掛）の試着', nameEn: 'Try on Japanese Traditional Wedding Attire',
     description: '白無垢・色打掛などの和装を試着し選定', descriptionEn: 'Try on traditional Japanese wedding garments such as Shiromuku and Iro-Uchikake',
     recommendedTiming: '6〜8ヶ月前', recommendedTimingEn: '6-8 months before',
@@ -1380,7 +1380,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 100000, budgetEstimateMax: 500000,
   },
   {
-    taskId: 'attire_010', categoryId: 'attire_beauty', phaseId: 'phase_07',
+    taskId: 'attire_010', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'メンズグルーミング', nameEn: 'Groom\'s Grooming & Preparation',
     description: '新郎のヘアカット、スキンケア、眉整えなどの身だしなみ準備', descriptionEn: 'Groom\'s haircut, skincare, eyebrow grooming, and personal care preparation',
     recommendedTiming: '1〜2ヶ月前', recommendedTimingEn: '1-2 months before',
@@ -1396,7 +1396,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 5000, budgetEstimateMax: 50000,
   },
   {
-    taskId: 'attire_011', categoryId: 'attire_beauty', phaseId: 'phase_07',
+    taskId: 'attire_011', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '当日の着替えプラン', nameEn: 'Day-of Costume Change Plan',
     description: 'お色直しのタイミングと衣装の着替え順序を計画', descriptionEn: 'Plan timing and order of costume changes during the reception',
     recommendedTiming: '2〜3ヶ月前', recommendedTimingEn: '2-3 months before',
@@ -1412,7 +1412,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 30000,
   },
   {
-    taskId: 'attire_012', categoryId: 'attire_beauty', phaseId: 'phase_06',
+    taskId: 'attire_012', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ブライダルネイル', nameEn: 'Bridal Nail Art',
     description: '結婚式に合わせたネイルデザインの選定と施術予約', descriptionEn: 'Select nail art design and book appointment for the wedding',
     recommendedTiming: '3〜4ヶ月前（予約）、1週間前（施術）', recommendedTimingEn: '3-4 months before (booking), 1 week before (appointment)',
@@ -1427,9 +1427,9 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 5000, budgetEstimateMax: 20000,
   },
 
-  // ===== ADDITIONAL TASKS (ceremony_day) =====
+  // ===== ADDITIONAL TASKS (ceremony - day-of) =====
   {
-    taskId: 'ceremony_016', categoryId: 'ceremony_day', phaseId: 'phase_05',
+    taskId: 'ceremony_016', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'リングピローの準備', nameEn: 'Prepare Ring Pillow',
     description: '指輪交換で使用するリングピローを手作りまたは購入', descriptionEn: 'Handmake or purchase a ring pillow for the ring exchange ceremony',
     recommendedTiming: '4〜5ヶ月前', recommendedTimingEn: '4-5 months before',
@@ -1444,7 +1444,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 1000, budgetEstimateMax: 10000,
   },
   {
-    taskId: 'ceremony_017', categoryId: 'ceremony_day', phaseId: 'phase_05',
+    taskId: 'ceremony_017', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ウェディングツリー/ゲスト参加型演出', nameEn: 'Wedding Tree / Guest Participation Display',
     description: 'ゲストが拇印やシールで参加するウェディングツリーなどの演出を準備', descriptionEn: 'Prepare participatory displays like a wedding tree where guests leave thumbprints or stickers',
     recommendedTiming: '4〜5ヶ月前', recommendedTimingEn: '4-5 months before',
@@ -1460,7 +1460,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 2000, budgetEstimateMax: 15000,
   },
   {
-    taskId: 'ceremony_018', categoryId: 'ceremony_day', phaseId: 'phase_06',
+    taskId: 'ceremony_018', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'キャンドルサービスの企画', nameEn: 'Plan Candle Service',
     description: 'キャンドルサービスやキャンドルリレーの演出を企画', descriptionEn: 'Plan candle service or candle relay performance for the reception',
     recommendedTiming: '3〜4ヶ月前', recommendedTimingEn: '3-4 months before',
@@ -1476,7 +1476,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 5000, budgetEstimateMax: 30000,
   },
   {
-    taskId: 'ceremony_019', categoryId: 'ceremony_day', phaseId: 'phase_06',
+    taskId: 'ceremony_019', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ファーストバイトの準備', nameEn: 'Prepare First Bite Ceremony',
     description: 'ケーキ入刀後のファーストバイト演出の準備', descriptionEn: 'Prepare the first bite ceremony after cake cutting',
     recommendedTiming: '3〜4ヶ月前', recommendedTimingEn: '3-4 months before',
@@ -1491,7 +1491,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 1000, budgetEstimateMax: 10000,
   },
   {
-    taskId: 'ceremony_020', categoryId: 'ceremony_day', phaseId: 'phase_07',
+    taskId: 'ceremony_020', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '花嫁の手紙の準備', nameEn: 'Prepare Bride\'s Letter',
     description: '花嫁から両親への手紙を書き、朗読の練習', descriptionEn: 'Write the bride\'s letter to parents and practice reading aloud',
     recommendedTiming: '1〜2ヶ月前', recommendedTimingEn: '1-2 months before',
@@ -1507,7 +1507,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 500, budgetEstimateMax: 3000,
   },
   {
-    taskId: 'ceremony_021', categoryId: 'ceremony_day', phaseId: 'phase_06',
+    taskId: 'ceremony_021', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'プロフィールムービーの作成', nameEn: 'Create Profile Video',
     description: 'ふたりの生い立ちや出会いを紹介するプロフィールムービーを制作', descriptionEn: 'Produce a profile video introducing the couple\'s story and how they met',
     recommendedTiming: '3〜4ヶ月前', recommendedTimingEn: '3-4 months before',
@@ -1524,7 +1524,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 5000, budgetEstimateMax: 100000,
   },
   {
-    taskId: 'ceremony_022', categoryId: 'ceremony_day', phaseId: 'phase_05',
+    taskId: 'ceremony_022', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'テーブルコーディネートの決定', nameEn: 'Decide Table Coordination',
     description: 'テーブルクロス、ナプキン、花、小物などの卓上装飾を決定', descriptionEn: 'Choose table decorations including tablecloth, napkins, flowers, and accessories',
     recommendedTiming: '4〜5ヶ月前', recommendedTimingEn: '4-5 months before',
@@ -1540,7 +1540,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 20000, budgetEstimateMax: 100000,
   },
   {
-    taskId: 'ceremony_023', categoryId: 'ceremony_day', phaseId: 'phase_07',
+    taskId: 'ceremony_023', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '両親への記念品贈呈の準備', nameEn: 'Prepare Gifts for Parents',
     description: '挙式・披露宴で両親に贈る記念品（花束・ギフト等）を準備', descriptionEn: 'Prepare commemorative gifts (bouquet, gifts, etc.) for parents at the ceremony',
     recommendedTiming: '1〜2ヶ月前', recommendedTimingEn: '1-2 months before',
@@ -1556,9 +1556,9 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 5000, budgetEstimateMax: 30000,
   },
 
-  // ===== ADDITIONAL TASKS (photo_video) =====
+  // ===== ADDITIONAL TASKS (ceremony - photo/video) =====
   {
-    taskId: 'photo_007', categoryId: 'photo_video', phaseId: 'phase_04',
+    taskId: 'photo_007', categoryId: 'ceremony', phaseId: 'phase_05',
     name: '前撮り（ロケーション撮影）', nameEn: 'Pre-Wedding Location Photo Shoot',
     description: '結婚式前にロケーションでの前撮り撮影を実施', descriptionEn: 'Conduct a pre-wedding photo shoot at an outdoor or special location',
     recommendedTiming: '6〜8ヶ月前', recommendedTimingEn: '6-8 months before',
@@ -1575,7 +1575,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 50000, budgetEstimateMax: 300000,
   },
   {
-    taskId: 'photo_008', categoryId: 'photo_video', phaseId: 'phase_07',
+    taskId: 'photo_008', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'ゲストへの撮影依頼（インスタタグ等）', nameEn: 'Request Guest Photos (Instagram Tag, etc.)',
     description: 'ゲストにSNSハッシュタグや写真共有方法を案内', descriptionEn: 'Share social media hashtag and photo sharing instructions with guests',
     recommendedTiming: '1〜2ヶ月前', recommendedTimingEn: '1-2 months before',
@@ -1591,7 +1591,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 5000,
   },
   {
-    taskId: 'photo_009', categoryId: 'photo_video', phaseId: 'phase_06',
+    taskId: 'photo_009', categoryId: 'ceremony', phaseId: 'phase_05',
     name: 'エンドロールムービーの手配', nameEn: 'Arrange End Roll Movie',
     description: '披露宴のエンディングで流すゲスト写真付きのエンドロールを手配', descriptionEn: 'Arrange an end roll video with guest photos to play at the reception finale',
     recommendedTiming: '3〜4ヶ月前', recommendedTimingEn: '3-4 months before',
@@ -1607,9 +1607,9 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 10000, budgetEstimateMax: 150000,
   },
 
-  // ===== ADDITIONAL TASKS (legal) =====
+  // ===== ADDITIONAL TASKS (legal_procedures) =====
   {
-    taskId: 'legal_006', categoryId: 'legal', phaseId: 'phase_08',
+    taskId: 'legal_006', categoryId: 'legal_procedures', phaseId: 'phase_06',
     name: '婚姻届の届出先の確認', nameEn: 'Confirm Marriage Registration Office',
     description: '婚姻届を提出する役所と必要書類を事前に確認', descriptionEn: 'Confirm the municipal office and required documents for marriage registration',
     recommendedTiming: '1ヶ月前', recommendedTimingEn: '1 month before',
@@ -1625,7 +1625,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 500, budgetEstimateMax: 3000,
   },
   {
-    taskId: 'legal_007', categoryId: 'legal', phaseId: 'phase_10',
+    taskId: 'legal_007', categoryId: 'legal_procedures', phaseId: 'phase_08',
     name: 'マイナンバーカードの更新', nameEn: 'Update My Number Card',
     description: '婚姻による氏名・住所変更に伴うマイナンバーカードの更新手続き', descriptionEn: 'Update My Number Card after name/address change due to marriage',
     recommendedTiming: '挙式後2週間以内', recommendedTimingEn: 'Within 2 weeks after wedding',
@@ -1640,7 +1640,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 1000,
   },
   {
-    taskId: 'legal_008', categoryId: 'legal', phaseId: 'phase_10',
+    taskId: 'legal_008', categoryId: 'legal_procedures', phaseId: 'phase_08',
     name: 'パスポートの変更手続き', nameEn: 'Update Passport',
     description: '婚姻による氏名変更に伴うパスポートの訂正・新規申請', descriptionEn: 'Correct or renew passport after name change due to marriage',
     recommendedTiming: '挙式後1ヶ月以内', recommendedTimingEn: 'Within 1 month after wedding',
@@ -1655,7 +1655,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 6000, budgetEstimateMax: 16000,
   },
   {
-    taskId: 'legal_009', categoryId: 'legal', phaseId: 'phase_10',
+    taskId: 'legal_009', categoryId: 'legal_procedures', phaseId: 'phase_08',
     name: '運転免許証の氏名・住所変更', nameEn: 'Update Driver\'s License Name & Address',
     description: '婚姻後の氏名・住所変更を運転免許証に反映', descriptionEn: 'Update name and address on driver\'s license after marriage',
     recommendedTiming: '挙式後2週間以内', recommendedTimingEn: 'Within 2 weeks after wedding',
@@ -1670,9 +1670,9 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 500,
   },
 
-  // ===== ADDITIONAL TASKS (new_life) =====
+  // ===== ADDITIONAL TASKS (housing / lifestyle / finance) =====
   {
-    taskId: 'life_007', categoryId: 'new_life', phaseId: 'phase_03',
+    taskId: 'life_007', categoryId: 'life_planning', phaseId: 'phase_04',
     name: 'ライフプラン（将来設計）の話し合い', nameEn: 'Discuss Life Plan (Future Planning)',
     description: '子供の計画、キャリア、老後資金など将来設計について話し合う', descriptionEn: 'Discuss future plans including children, career, and retirement savings',
     recommendedTiming: '8〜10ヶ月前', recommendedTimingEn: '8-10 months before',
@@ -1688,7 +1688,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 10000,
   },
   {
-    taskId: 'life_008', categoryId: 'new_life', phaseId: 'phase_04',
+    taskId: 'life_008', categoryId: 'lifestyle_setup', phaseId: 'phase_04',
     name: '家事分担の決定', nameEn: 'Decide Household Chore Division',
     description: '新生活での家事の分担ルールを話し合い決定', descriptionEn: 'Discuss and decide rules for dividing household chores in your new life',
     recommendedTiming: '6〜8ヶ月前', recommendedTimingEn: '6-8 months before',
@@ -1704,7 +1704,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'life_009', categoryId: 'new_life', phaseId: 'phase_05',
+    taskId: 'life_009', categoryId: 'lifestyle_setup', phaseId: 'phase_07',
     name: 'ペットの検討', nameEn: 'Consider Getting a Pet',
     description: 'ペットを飼うかどうか、種類や飼育環境について話し合う', descriptionEn: 'Discuss whether to get a pet, and the type and living environment required',
     recommendedTiming: '4〜6ヶ月前', recommendedTimingEn: '4-6 months before',
@@ -1720,7 +1720,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 50000,
   },
   {
-    taskId: 'life_010', categoryId: 'new_life', phaseId: 'phase_05',
+    taskId: 'life_010', categoryId: 'finance_planning', phaseId: 'phase_07',
     name: '共同口座・家計管理の仕組みづくり', nameEn: 'Set Up Joint Account & Household Budget',
     description: '夫婦の共同口座開設と家計管理のルールを決定', descriptionEn: 'Open a joint account and establish household budget management rules',
     recommendedTiming: '4〜6ヶ月前', recommendedTimingEn: '4-6 months before',
@@ -1736,9 +1736,9 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 5000,
   },
 
-  // ===== ADDITIONAL TASKS (post_wedding) =====
+  // ===== ADDITIONAL TASKS (lifestyle_setup) =====
   {
-    taskId: 'post_008', categoryId: 'post_wedding', phaseId: 'phase_10',
+    taskId: 'post_008', categoryId: 'lifestyle_setup', phaseId: 'phase_08',
     name: 'SNSでの写真公開', nameEn: 'Share Wedding Photos on Social Media',
     description: '結婚式の写真をSNSで公開し、友人・知人に報告', descriptionEn: 'Share wedding photos on social media to announce to friends and acquaintances',
     recommendedTiming: '挙式後1〜2週間', recommendedTimingEn: '1-2 weeks after wedding',
@@ -1754,7 +1754,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'post_009', categoryId: 'post_wedding', phaseId: 'phase_10',
+    taskId: 'post_009', categoryId: 'lifestyle_setup', phaseId: 'phase_08',
     name: '結婚式の振り返り', nameEn: 'Wedding Review & Reflection',
     description: 'ふたりで結婚式を振り返り、良かった点や改善点を共有', descriptionEn: 'Reflect on the wedding together, sharing highlights and areas for improvement',
     recommendedTiming: '挙式後1〜2週間', recommendedTimingEn: '1-2 weeks after wedding',
@@ -1769,7 +1769,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 0,
   },
   {
-    taskId: 'post_010', categoryId: 'post_wedding', phaseId: 'phase_10',
+    taskId: 'post_010', categoryId: 'lifestyle_setup', phaseId: 'phase_08',
     name: 'レンタル品の返却', nameEn: 'Return Rental Items',
     description: 'ウェディングドレス、タキシード、装飾品等のレンタル品を返却', descriptionEn: 'Return rented items such as wedding dress, tuxedo, and decorations',
     recommendedTiming: '挙式後1週間以内', recommendedTimingEn: 'Within 1 week after wedding',
@@ -1785,7 +1785,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 0, budgetEstimateMax: 10000,
   },
   {
-    taskId: 'post_011', categoryId: 'post_wedding', phaseId: 'phase_10',
+    taskId: 'post_011', categoryId: 'lifestyle_setup', phaseId: 'phase_08',
     name: '結婚報告はがきの送付', nameEn: 'Send Marriage Announcement Postcards',
     description: '結婚式に出席できなかった方や職場関係者に結婚報告はがきを送付', descriptionEn: 'Send marriage announcement postcards to those who could not attend and work contacts',
     recommendedTiming: '挙式後1ヶ月以内', recommendedTimingEn: 'Within 1 month after wedding',
@@ -1801,7 +1801,7 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     budgetEstimateMin: 3000, budgetEstimateMax: 15000,
   },
   {
-    taskId: 'post_012', categoryId: 'post_wedding', phaseId: 'phase_10',
+    taskId: 'post_012', categoryId: 'lifestyle_setup', phaseId: 'phase_08',
     name: 'ウェディングアルバムの制作', nameEn: 'Create Wedding Photo Album',
     description: '結婚式の写真を厳選してアルバムを制作', descriptionEn: 'Select the best wedding photos and create a photo album',
     recommendedTiming: '挙式後1-3ヶ月', recommendedTimingEn: '1-3 months after wedding',
@@ -1815,6 +1815,497 @@ export const TASK_TEMPLATES: TaskTemplate[] = [
     notes: ['両親への贈呈用も制作するのがおすすめ', 'データのバックアップを忘れずに'],
     notesEn: ['Recommended to also make copies for parents', 'Do not forget to backup photo data'],
     budgetEstimateMin: 10000, budgetEstimateMax: 80000,
+  },
+
+  // ===== NEW TASKS: MARRIAGE JOURNEY ROADMAP =====
+
+  // --- values_alignment (phase_01) ---
+  {
+    taskId: 'new_001', categoryId: 'values_alignment', phaseId: 'phase_01',
+    name: '結婚観・人生設計の話し合い', nameEn: 'Discuss Marriage Values and Life Goals',
+    description: 'お互いの結婚観や将来のビジョンについてじっくり話し合う', descriptionEn: 'Have an in-depth discussion about each other\'s views on marriage and future vision',
+    recommendedTiming: '18ヶ月以上前', recommendedTimingEn: '18+ months before',
+    monthsBefore: 20,
+    subtasks: [
+      { label: '結婚に対する考えを共有', labelEn: 'Share thoughts on marriage' },
+      { label: '将来の住みたい場所を話し合う', labelEn: 'Discuss where to live in the future' },
+      { label: '子供についての考えを共有', labelEn: 'Share thoughts on having children' },
+      { label: '仕事と家庭のバランスを話し合う', labelEn: 'Discuss work-life balance' },
+    ],
+    notes: ['リラックスした環境で話し合うことが大切', '一度で完結しなくてOK、何度でも話し合おう'],
+    notesEn: ['Have the conversation in a relaxed setting', 'It\'s okay to discuss multiple times'],
+    budgetEstimateMin: 0, budgetEstimateMax: 0,
+  },
+  {
+    taskId: 'new_002', categoryId: 'values_alignment', phaseId: 'phase_01',
+    name: '金銭感覚のすり合わせ', nameEn: 'Align on Financial Habits and Attitudes',
+    description: 'お互いの金銭感覚、貯蓄習慣、お金の使い方について話し合う', descriptionEn: 'Discuss each other\'s financial habits, savings patterns, and spending attitudes',
+    recommendedTiming: '18ヶ月以上前', recommendedTimingEn: '18+ months before',
+    monthsBefore: 20,
+    subtasks: [
+      { label: '月々の収支を共有', labelEn: 'Share monthly income and expenses' },
+      { label: '貯蓄や投資の方針を話し合う', labelEn: 'Discuss savings and investment policies' },
+      { label: '大きな買い物のルールを決める', labelEn: 'Set rules for large purchases' },
+    ],
+    notes: ['お金の話はタブーにしない', '価値観の違いを認め合うことが重要'],
+    notesEn: ['Don\'t make money a taboo topic', 'Acknowledging different values is important'],
+    budgetEstimateMin: 0, budgetEstimateMax: 0,
+  },
+  {
+    taskId: 'new_003', categoryId: 'values_alignment', phaseId: 'phase_01',
+    name: '家事・育児の役割分担の話し合い', nameEn: 'Discuss Household and Childcare Role Sharing',
+    description: '家事や将来の育児について、役割分担の考え方を話し合う', descriptionEn: 'Discuss expectations for sharing household chores and future childcare responsibilities',
+    recommendedTiming: '18ヶ月以上前', recommendedTimingEn: '18+ months before',
+    monthsBefore: 20,
+    subtasks: [
+      { label: '現在の家事スキルを確認', labelEn: 'Assess current household skills' },
+      { label: '理想の分担イメージを共有', labelEn: 'Share ideal division of labor' },
+      { label: '育児に対する考えを話し合う', labelEn: 'Discuss views on childcare' },
+    ],
+    notes: ['「やって当然」という思い込みを捨てる', '定期的に見直すことを前提に'],
+    notesEn: ['Let go of assumptions about who should do what', 'Plan to revisit and adjust regularly'],
+    budgetEstimateMin: 0, budgetEstimateMax: 0,
+  },
+  {
+    taskId: 'new_004', categoryId: 'values_alignment', phaseId: 'phase_01',
+    name: '宗教・文化的背景の共有', nameEn: 'Share Religious and Cultural Backgrounds',
+    description: 'お互いの宗教観、文化的な価値観、家族の伝統について共有する', descriptionEn: 'Share religious views, cultural values, and family traditions with each other',
+    recommendedTiming: '18ヶ月以上前', recommendedTimingEn: '18+ months before',
+    monthsBefore: 20,
+    subtasks: [
+      { label: '宗教的な慣習を共有', labelEn: 'Share religious practices' },
+      { label: '家族の年中行事を確認', labelEn: 'Review family annual events' },
+      { label: '食事や生活習慣の違いを話し合う', labelEn: 'Discuss dietary and lifestyle differences' },
+    ],
+    notes: ['相手の文化を尊重する姿勢が大切', '両家の慣習の違いは早めに把握'],
+    notesEn: ['Respect for each other\'s culture is essential', 'Understand family custom differences early'],
+    budgetEstimateMin: 0, budgetEstimateMax: 0,
+  },
+
+  // --- engagement (phase_02) ---
+  {
+    taskId: 'new_005', categoryId: 'engagement', phaseId: 'phase_02',
+    name: 'プロポーズの計画', nameEn: 'Plan the Proposal',
+    description: 'プロポーズのシチュエーション、場所、演出を具体的に計画する', descriptionEn: 'Concretely plan the proposal situation, location, and presentation',
+    recommendedTiming: '18〜12ヶ月前', recommendedTimingEn: '18-12 months before',
+    monthsBefore: 15,
+    subtasks: [
+      { label: 'パートナーの好みをリサーチ', labelEn: 'Research partner\'s preferences' },
+      { label: '場所と日時を決定', labelEn: 'Decide location and date' },
+      { label: '演出・サプライズの内容を計画', labelEn: 'Plan surprise elements' },
+      { label: '記念撮影の手配を検討', labelEn: 'Consider arranging commemorative photos' },
+    ],
+    notes: ['パートナーの性格に合わせた演出を', '天候など不測の事態に備えてプランBも用意'],
+    notesEn: ['Tailor the experience to your partner\'s personality', 'Prepare a plan B for unexpected situations like weather'],
+    budgetEstimateMin: 10000, budgetEstimateMax: 300000,
+  },
+  {
+    taskId: 'new_006', categoryId: 'engagement', phaseId: 'phase_02',
+    name: '婚約指輪の選定・購入', nameEn: 'Select and Purchase Engagement Ring',
+    description: '婚約指輪のデザイン、素材、予算を検討し、選定・購入する', descriptionEn: 'Consider design, material, and budget for the engagement ring, then select and purchase',
+    recommendedTiming: '18〜12ヶ月前', recommendedTimingEn: '18-12 months before',
+    monthsBefore: 15,
+    subtasks: [
+      { label: '予算を設定', labelEn: 'Set budget' },
+      { label: 'ジュエリーショップを回る', labelEn: 'Visit jewelry shops' },
+      { label: 'デザインと素材を選定', labelEn: 'Select design and material' },
+      { label: '購入・受け取り', labelEn: 'Purchase and pick up' },
+    ],
+    notes: ['オーダーメイドは2〜3ヶ月かかる場合も', 'パートナーの指のサイズを事前にリサーチ'],
+    notesEn: ['Custom orders may take 2-3 months', 'Research partner\'s ring size beforehand'],
+    budgetEstimateMin: 200000, budgetEstimateMax: 800000,
+  },
+
+  // --- family_relations (phase_03) ---
+  {
+    taskId: 'new_007', categoryId: 'family_relations', phaseId: 'phase_03',
+    name: '両親への結婚報告', nameEn: 'Report Marriage Plans to Parents',
+    description: 'それぞれの両親に結婚の意思を正式に報告する', descriptionEn: 'Formally report marriage intentions to each set of parents',
+    recommendedTiming: '12〜9ヶ月前', recommendedTimingEn: '12-9 months before',
+    monthsBefore: 11,
+    subtasks: [
+      { label: '報告の日程を調整', labelEn: 'Schedule the announcement' },
+      { label: '手土産を準備', labelEn: 'Prepare gifts' },
+      { label: '自分の両親に報告', labelEn: 'Inform your own parents' },
+      { label: '相手の両親に報告', labelEn: 'Inform partner\'s parents' },
+    ],
+    notes: ['直接会って報告するのがベスト', '服装はフォーマルに'],
+    notesEn: ['Best to inform in person', 'Dress formally'],
+    budgetEstimateMin: 5000, budgetEstimateMax: 20000,
+  },
+  {
+    taskId: 'new_008', categoryId: 'family_relations', phaseId: 'phase_03',
+    name: '両家顔合わせの企画', nameEn: 'Plan Meeting Between Families',
+    description: '両家が初めて顔を合わせる食事会の企画・手配', descriptionEn: 'Plan and arrange the first meeting dinner between both families',
+    recommendedTiming: '12〜9ヶ月前', recommendedTimingEn: '12-9 months before',
+    monthsBefore: 10,
+    subtasks: [
+      { label: '両家の希望日程を調整', labelEn: 'Coordinate schedules with both families' },
+      { label: 'レストラン・料亭を選定・予約', labelEn: 'Select and reserve restaurant' },
+      { label: '当日の進行を計画', labelEn: 'Plan the flow of the meeting' },
+    ],
+    notes: ['個室のあるお店がおすすめ', '両家の距離を考慮した場所選びを'],
+    notesEn: ['A restaurant with private rooms is recommended', 'Consider travel distance for both families'],
+    budgetEstimateMin: 30000, budgetEstimateMax: 100000,
+  },
+  {
+    taskId: 'new_009', categoryId: 'family_relations', phaseId: 'phase_03',
+    name: '結納・婚約食事会の準備', nameEn: 'Prepare Engagement Ceremony or Dinner',
+    description: '結納を行うか、カジュアルな婚約食事会にするかを決め、準備する', descriptionEn: 'Decide whether to hold a formal Yuino or casual engagement dinner, and prepare accordingly',
+    recommendedTiming: '12〜9ヶ月前', recommendedTimingEn: '12-9 months before',
+    monthsBefore: 10,
+    subtasks: [
+      { label: '結納の有無を両家で相談', labelEn: 'Discuss with both families whether to hold Yuino' },
+      { label: '形式を決定（正式結納/略式/食事会）', labelEn: 'Decide format (formal/simplified/dinner)' },
+      { label: '必要な準備品を手配', labelEn: 'Arrange necessary items' },
+    ],
+    notes: ['地域により慣習が異なる', '最近は食事会で代用するケースが増加'],
+    notesEn: ['Customs vary by region', 'Casual dinners are increasingly common'],
+    budgetEstimateMin: 30000, budgetEstimateMax: 300000,
+  },
+
+  // --- finance_planning (phase_04) ---
+  {
+    taskId: 'new_010', categoryId: 'finance_planning', phaseId: 'phase_04',
+    name: '共同口座の開設検討', nameEn: 'Consider Opening Joint Bank Account',
+    description: '夫婦の共同口座を開設するかどうか検討し、方針を決める', descriptionEn: 'Consider whether to open a joint bank account and decide on the approach',
+    recommendedTiming: '9〜6ヶ月前', recommendedTimingEn: '9-6 months before',
+    monthsBefore: 8,
+    subtasks: [
+      { label: '共同口座のメリット・デメリットを調査', labelEn: 'Research pros and cons of joint accounts' },
+      { label: '銀行を比較検討', labelEn: 'Compare banks' },
+      { label: '口座の運用ルールを決定', labelEn: 'Set account management rules' },
+    ],
+    notes: ['日本では完全な共同名義口座はないため代理人カードを検討', 'ネットバンクも選択肢に'],
+    notesEn: ['Japan doesn\'t have true joint accounts; consider proxy cards', 'Online banks are also an option'],
+    budgetEstimateMin: 0, budgetEstimateMax: 0,
+  },
+  {
+    taskId: 'new_011', categoryId: 'finance_planning', phaseId: 'phase_04',
+    name: '結婚資金の目標設定と貯蓄計画', nameEn: 'Set Savings Goals for Marriage',
+    description: '結婚にかかる総費用を見積もり、貯蓄目標と計画を立てる', descriptionEn: 'Estimate total marriage costs and create savings goals and a plan',
+    recommendedTiming: '9〜6ヶ月前', recommendedTimingEn: '9-6 months before',
+    monthsBefore: 8,
+    subtasks: [
+      { label: '結婚関連の総費用を見積もり', labelEn: 'Estimate total marriage-related costs' },
+      { label: '月々の貯蓄目標を設定', labelEn: 'Set monthly savings goals' },
+      { label: '節約できるポイントを検討', labelEn: 'Identify areas to save' },
+    ],
+    notes: ['結婚式以外の費用（新居、引越し等）も含めて計算', 'ご祝儀収入も考慮に入れる'],
+    notesEn: ['Include non-ceremony costs (new home, moving, etc.)', 'Factor in gift money income'],
+    budgetEstimateMin: 0, budgetEstimateMax: 0,
+  },
+  {
+    taskId: 'new_012', categoryId: 'finance_planning', phaseId: 'phase_04',
+    name: '結婚後の家計シミュレーション', nameEn: 'Simulate Post-Marriage Household Budget',
+    description: '結婚後の月々の収支をシミュレーションし、家計の見通しを立てる', descriptionEn: 'Simulate monthly income and expenses after marriage to forecast household finances',
+    recommendedTiming: '9〜6ヶ月前', recommendedTimingEn: '9-6 months before',
+    monthsBefore: 7,
+    subtasks: [
+      { label: '予想される月々の固定費を算出', labelEn: 'Calculate expected monthly fixed costs' },
+      { label: '変動費の見込みを立てる', labelEn: 'Estimate variable expenses' },
+      { label: '貯蓄余力を確認', labelEn: 'Check savings capacity' },
+    ],
+    notes: ['家計簿アプリを使ったシミュレーションが便利', 'FPへの相談も検討'],
+    notesEn: ['Budget apps are useful for simulation', 'Consider consulting a financial planner'],
+    budgetEstimateMin: 0, budgetEstimateMax: 10000,
+  },
+  {
+    taskId: 'new_013', categoryId: 'finance_planning', phaseId: 'phase_04',
+    name: 'ふたりの保険見直し', nameEn: 'Review Insurance for Both Partners',
+    description: '結婚を機に、ふたりの生命保険・医療保険・損害保険を見直す', descriptionEn: 'Review life, medical, and property insurance for both partners upon marriage',
+    recommendedTiming: '9〜6ヶ月前', recommendedTimingEn: '9-6 months before',
+    monthsBefore: 7,
+    subtasks: [
+      { label: '現在の保険契約を確認', labelEn: 'Review current insurance policies' },
+      { label: '必要な保障額を見積もり', labelEn: 'Estimate required coverage' },
+      { label: '保険の新規加入・変更を検討', labelEn: 'Consider new policies or changes' },
+    ],
+    notes: ['受取人の変更は婚姻届提出後に', '複数社を比較して最適なプランを'],
+    notesEn: ['Change beneficiaries after marriage registration', 'Compare multiple companies for the best plan'],
+    budgetEstimateMin: 0, budgetEstimateMax: 30000,
+  },
+
+  // --- housing (phase_04) ---
+  {
+    taskId: 'new_014', categoryId: 'housing', phaseId: 'phase_04',
+    name: '新居エリアの選定', nameEn: 'Select Area for New Home',
+    description: 'ふたりの通勤・生活を考慮して、新居のエリアを選定する', descriptionEn: 'Select the area for your new home considering commute and lifestyle for both',
+    recommendedTiming: '9〜6ヶ月前', recommendedTimingEn: '9-6 months before',
+    monthsBefore: 8,
+    subtasks: [
+      { label: '通勤時間のバランスを確認', labelEn: 'Check commute time balance' },
+      { label: '周辺環境（買い物、病院等）を調査', labelEn: 'Research surrounding facilities (shopping, hospital, etc.)' },
+      { label: '家賃相場を調査', labelEn: 'Research rental market prices' },
+    ],
+    notes: ['将来の子育て環境も考慮すると◎', '実際に街を歩いてみるのがおすすめ'],
+    notesEn: ['Consider future child-rearing environment', 'Walking around the neighborhood is recommended'],
+    budgetEstimateMin: 0, budgetEstimateMax: 0,
+  },
+  {
+    taskId: 'new_015', categoryId: 'housing', phaseId: 'phase_04',
+    name: '物件探し・内見', nameEn: 'Search and Visit Properties',
+    description: '不動産サイトや仲介業者を利用して物件を探し、内見する', descriptionEn: 'Search for properties using real estate sites or agents and visit them',
+    recommendedTiming: '9〜6ヶ月前', recommendedTimingEn: '9-6 months before',
+    monthsBefore: 7,
+    subtasks: [
+      { label: '条件リストを作成', labelEn: 'Create requirements list' },
+      { label: '不動産サイトで検索', labelEn: 'Search on real estate sites' },
+      { label: '内見を3〜5件実施', labelEn: 'Visit 3-5 properties' },
+      { label: '物件を決定・申込み', labelEn: 'Decide and apply' },
+    ],
+    notes: ['繁忙期（1〜3月）は物件の入れ替わりが激しい', '内見時はスマホで写真・動画を記録'],
+    notesEn: ['Peak season (Jan-Mar) has high turnover', 'Record photos and videos during visits'],
+    budgetEstimateMin: 0, budgetEstimateMax: 50000,
+  },
+  {
+    taskId: 'new_016', categoryId: 'housing', phaseId: 'phase_04',
+    name: '引越し業者の手配', nameEn: 'Arrange Moving Company',
+    description: '引越し業者を比較検討し、見積もりを取って手配する', descriptionEn: 'Compare moving companies, get quotes, and arrange the move',
+    recommendedTiming: '9〜6ヶ月前', recommendedTimingEn: '9-6 months before',
+    monthsBefore: 7,
+    subtasks: [
+      { label: '引越し業者3社以上から見積もり', labelEn: 'Get quotes from 3+ moving companies' },
+      { label: '業者を決定・予約', labelEn: 'Select and book company' },
+      { label: '引越し日を確定', labelEn: 'Confirm moving date' },
+    ],
+    notes: ['繁忙期は早めの予約が必須', '不用品処分も同時に進める'],
+    notesEn: ['Early booking is essential during peak season', 'Dispose of unwanted items simultaneously'],
+    budgetEstimateMin: 30000, budgetEstimateMax: 200000,
+  },
+  {
+    taskId: 'new_017', categoryId: 'housing', phaseId: 'phase_04',
+    name: '家具・家電の購入計画', nameEn: 'Plan Furniture and Appliance Purchases',
+    description: '新居に必要な家具・家電をリストアップし、購入計画を立てる', descriptionEn: 'List necessary furniture and appliances for the new home and create a purchase plan',
+    recommendedTiming: '9〜6ヶ月前', recommendedTimingEn: '9-6 months before',
+    monthsBefore: 7,
+    subtasks: [
+      { label: '必要な家具・家電をリスト化', labelEn: 'List needed furniture and appliances' },
+      { label: '持ち寄れるものを棚卸し', labelEn: 'Inventory items to bring from each home' },
+      { label: '予算配分を決定', labelEn: 'Allocate budget' },
+      { label: '購入スケジュールを作成', labelEn: 'Create purchase schedule' },
+    ],
+    notes: ['セール時期を狙うとお得', '搬入経路のサイズ確認を忘れずに'],
+    notesEn: ['Shopping during sales can save money', 'Don\'t forget to check delivery path dimensions'],
+    budgetEstimateMin: 300000, budgetEstimateMax: 1500000,
+  },
+
+  // --- legal_procedures (phase_06) ---
+  {
+    taskId: 'new_018', categoryId: 'legal_procedures', phaseId: 'phase_06',
+    name: '婚姻届の準備', nameEn: 'Prepare Marriage Registration Form',
+    description: '婚姻届の用紙を入手し、記入方法を確認して準備する', descriptionEn: 'Obtain the marriage registration form and prepare it with correct information',
+    recommendedTiming: '2ヶ月前〜入籍月', recommendedTimingEn: '2 months before to registration month',
+    monthsBefore: 2,
+    subtasks: [
+      { label: '婚姻届の用紙を入手', labelEn: 'Obtain marriage registration form' },
+      { label: '記入例を確認', labelEn: 'Review sample entries' },
+      { label: '必要事項を正確に記入', labelEn: 'Fill in all required information accurately' },
+    ],
+    notes: ['記入ミスがあると受理されないので下書きを', 'デザイン婚姻届もある'],
+    notesEn: ['Make a draft first to avoid errors', 'Decorative marriage forms are also available'],
+    budgetEstimateMin: 0, budgetEstimateMax: 3000,
+  },
+  {
+    taskId: 'new_019', categoryId: 'legal_procedures', phaseId: 'phase_06',
+    name: '証人の依頼', nameEn: 'Request Witnesses for Registration',
+    description: '婚姻届の証人2名に署名を依頼する', descriptionEn: 'Ask two witnesses to sign the marriage registration form',
+    recommendedTiming: '2ヶ月前〜入籍月', recommendedTimingEn: '2 months before to registration month',
+    monthsBefore: 1,
+    subtasks: [
+      { label: '証人を2名選定', labelEn: 'Select 2 witnesses' },
+      { label: '署名・捺印を依頼', labelEn: 'Request signature and seal' },
+      { label: '記入内容を確認', labelEn: 'Verify entered information' },
+    ],
+    notes: ['成人であれば誰でも証人になれる', '両親や親しい友人に依頼するケースが多い'],
+    notesEn: ['Any adult can serve as a witness', 'Often parents or close friends are asked'],
+    budgetEstimateMin: 0, budgetEstimateMax: 5000,
+  },
+  {
+    taskId: 'new_020', categoryId: 'legal_procedures', phaseId: 'phase_06',
+    name: '戸籍謄本の取得', nameEn: 'Obtain Family Register Copy',
+    description: '婚姻届の提出に必要な戸籍謄本を本籍地の役所から取得する', descriptionEn: 'Obtain the family register copy required for marriage registration from your registered domicile',
+    recommendedTiming: '2ヶ月前〜入籍月', recommendedTimingEn: '2 months before to registration month',
+    monthsBefore: 1,
+    subtasks: [
+      { label: '本籍地を確認', labelEn: 'Confirm registered domicile' },
+      { label: '戸籍謄本を取得（窓口/郵送/コンビニ）', labelEn: 'Obtain copy (counter/mail/convenience store)' },
+      { label: '有効期限を確認', labelEn: 'Check validity period' },
+    ],
+    notes: ['本籍地以外で提出する場合のみ必要', 'マイナンバーカードがあればコンビニ取得も可能'],
+    notesEn: ['Only needed if filing outside your registered domicile', 'Can obtain at convenience stores with My Number Card'],
+    budgetEstimateMin: 450, budgetEstimateMax: 1000,
+  },
+
+  // --- lifestyle_setup (phase_07) ---
+  {
+    taskId: 'new_021', categoryId: 'lifestyle_setup', phaseId: 'phase_07',
+    name: '住所変更手続き', nameEn: 'Address Change Procedures',
+    description: '引越しに伴う住民票、郵便物転送、各種サービスの住所変更', descriptionEn: 'Update resident registration, mail forwarding, and various service addresses after moving',
+    recommendedTiming: '入籍前後', recommendedTimingEn: 'Around registration',
+    monthsBefore: 0,
+    subtasks: [
+      { label: '転出届・転入届の提出', labelEn: 'Submit move-out and move-in notifications' },
+      { label: '郵便物の転送手続き', labelEn: 'Set up mail forwarding' },
+      { label: '各種サービスの住所変更', labelEn: 'Update addresses for various services' },
+    ],
+    notes: ['転入届は引越し後14日以内', '郵便転送は1年間有効'],
+    notesEn: ['Submit move-in notice within 14 days', 'Mail forwarding is valid for 1 year'],
+    budgetEstimateMin: 0, budgetEstimateMax: 5000,
+  },
+  {
+    taskId: 'new_022', categoryId: 'lifestyle_setup', phaseId: 'phase_07',
+    name: '公共料金・インフラの契約', nameEn: 'Set Up Utility Contracts',
+    description: '電気・ガス・水道・インターネット等の契約手続き', descriptionEn: 'Arrange contracts for electricity, gas, water, internet, and other utilities',
+    recommendedTiming: '入籍前後', recommendedTimingEn: 'Around registration',
+    monthsBefore: 0,
+    subtasks: [
+      { label: '電気・ガス・水道の開通手続き', labelEn: 'Arrange electricity, gas, and water activation' },
+      { label: 'インターネット回線の契約', labelEn: 'Contract internet service' },
+      { label: 'NHK受信料の手続き', labelEn: 'Arrange NHK subscription' },
+    ],
+    notes: ['引越し日の2週間前までに手続きすると安心', 'ガスは立ち会いが必要'],
+    notesEn: ['Arrange 2 weeks before moving date for safety', 'Gas activation requires on-site attendance'],
+    budgetEstimateMin: 0, budgetEstimateMax: 50000,
+  },
+  {
+    taskId: 'new_023', categoryId: 'lifestyle_setup', phaseId: 'phase_07',
+    name: 'ご近所への挨拶', nameEn: 'Greet Neighbors',
+    description: '新居周辺のご近所に引越しの挨拶をする', descriptionEn: 'Greet neighbors around the new home after moving in',
+    recommendedTiming: '入籍前後', recommendedTimingEn: 'Around registration',
+    monthsBefore: 0,
+    subtasks: [
+      { label: '挨拶用の粗品を準備', labelEn: 'Prepare small greeting gifts' },
+      { label: '両隣と上下階に挨拶', labelEn: 'Greet neighbors on both sides and above/below' },
+      { label: '管理人・大家さんへの挨拶', labelEn: 'Greet building manager/landlord' },
+    ],
+    notes: ['粗品は500〜1,000円程度が目安', '挨拶は引越し当日〜翌日がベスト'],
+    notesEn: ['Gifts around 500-1000 yen are appropriate', 'Best to greet on moving day or the next day'],
+    budgetEstimateMin: 1000, budgetEstimateMax: 5000,
+  },
+  {
+    taskId: 'new_024', categoryId: 'lifestyle_setup', phaseId: 'phase_07',
+    name: '共同生活のルール作り', nameEn: 'Establish Shared Living Rules',
+    description: 'ふたりの共同生活における基本的なルールを話し合って決める', descriptionEn: 'Discuss and establish basic rules for shared living',
+    recommendedTiming: '入籍前後', recommendedTimingEn: 'Around registration',
+    monthsBefore: 0,
+    subtasks: [
+      { label: '起床・就寝時間のすり合わせ', labelEn: 'Align wake-up and bedtime schedules' },
+      { label: '来客時のルールを決定', labelEn: 'Set rules for having guests over' },
+      { label: 'プライベート空間の確保を話し合う', labelEn: 'Discuss personal space needs' },
+    ],
+    notes: ['柔軟に見直せるようルールは固定しすぎない', '不満は早めに話し合うことが大切'],
+    notesEn: ['Keep rules flexible for future adjustments', 'Address concerns early through open communication'],
+    budgetEstimateMin: 0, budgetEstimateMax: 0,
+  },
+
+  // --- life_planning (phase_09) ---
+  {
+    taskId: 'new_025', categoryId: 'life_planning', phaseId: 'phase_09',
+    name: 'ライフプラン表の作成', nameEn: 'Create Life Plan Timeline',
+    description: '今後のライフイベントを時系列で整理し、ライフプラン表を作成する', descriptionEn: 'Organize future life events chronologically and create a life plan timeline',
+    recommendedTiming: '入籍後3ヶ月〜', recommendedTimingEn: '3+ months after registration',
+    monthsBefore: -3,
+    subtasks: [
+      { label: '今後10〜30年のイベントを洗い出す', labelEn: 'List events for the next 10-30 years' },
+      { label: '必要資金を概算', labelEn: 'Estimate required funds' },
+      { label: 'ライフプラン表にまとめる', labelEn: 'Compile into a life plan table' },
+    ],
+    notes: ['FPに相談すると客観的なプランが立てやすい', '定期的（年1回程度）に見直す'],
+    notesEn: ['Consulting a financial planner helps create an objective plan', 'Review annually'],
+    budgetEstimateMin: 0, budgetEstimateMax: 30000,
+  },
+  {
+    taskId: 'new_026', categoryId: 'life_planning', phaseId: 'phase_09',
+    name: '将来の教育資金計画', nameEn: 'Plan Future Education Funds',
+    description: '子供の教育費を見据えた資金計画を立てる', descriptionEn: 'Create a financial plan considering future children\'s education costs',
+    recommendedTiming: '入籍後3ヶ月〜', recommendedTimingEn: '3+ months after registration',
+    monthsBefore: -4,
+    subtasks: [
+      { label: '教育費の目安を調査', labelEn: 'Research education cost estimates' },
+      { label: '学資保険・積立を検討', labelEn: 'Consider education insurance and savings plans' },
+      { label: '積立開始時期を決定', labelEn: 'Decide when to start saving' },
+    ],
+    notes: ['子供1人あたり1,000〜2,000万円が目安', '早く始めるほど負担が軽減'],
+    notesEn: ['Estimate 10-20 million yen per child', 'Starting early reduces the burden'],
+    budgetEstimateMin: 0, budgetEstimateMax: 0,
+  },
+  {
+    taskId: 'new_027', categoryId: 'life_planning', phaseId: 'phase_09',
+    name: '老後資金のシミュレーション', nameEn: 'Simulate Retirement Savings',
+    description: '老後に必要な資金をシミュレーションし、貯蓄・投資計画を立てる', descriptionEn: 'Simulate retirement fund needs and create savings and investment plans',
+    recommendedTiming: '入籍後3ヶ月〜', recommendedTimingEn: '3+ months after registration',
+    monthsBefore: -4,
+    subtasks: [
+      { label: '老後の生活費をシミュレーション', labelEn: 'Simulate retirement living costs' },
+      { label: '年金受給見込み額を確認', labelEn: 'Check estimated pension benefits' },
+      { label: '不足額を計算し対策を検討', labelEn: 'Calculate shortfall and consider countermeasures' },
+    ],
+    notes: ['iDeCo、NISA等の税制優遇制度を活用', '「老後2,000万円問題」を参考に'],
+    notesEn: ['Utilize tax-advantaged systems like iDeCo and NISA', 'Reference the "20 million yen retirement problem"'],
+    budgetEstimateMin: 0, budgetEstimateMax: 0,
+  },
+  {
+    taskId: 'new_028', categoryId: 'life_planning', phaseId: 'phase_09',
+    name: 'キャリアプランの話し合い', nameEn: 'Discuss Career Plans',
+    description: 'ふたりのキャリアプランと働き方について話し合う', descriptionEn: 'Discuss career plans and work styles for both partners',
+    recommendedTiming: '入籍後3ヶ月〜', recommendedTimingEn: '3+ months after registration',
+    monthsBefore: -3,
+    subtasks: [
+      { label: 'それぞれのキャリア目標を共有', labelEn: 'Share individual career goals' },
+      { label: '転職・独立の可能性を話し合う', labelEn: 'Discuss possibilities of job change or independence' },
+      { label: '育休・時短勤務の方針を確認', labelEn: 'Confirm policies on parental leave and reduced hours' },
+    ],
+    notes: ['お互いのキャリアを尊重する姿勢が大切', '状況に応じて柔軟に見直す'],
+    notesEn: ['Respecting each other\'s career is important', 'Be flexible and revisit as circumstances change'],
+    budgetEstimateMin: 0, budgetEstimateMax: 0,
+  },
+  {
+    taskId: 'new_029', categoryId: 'life_planning', phaseId: 'phase_09',
+    name: '遺言・エンディングノートの作成検討', nameEn: 'Consider Creating Wills and Ending Notes',
+    description: '万が一に備え、遺言やエンディングノートの作成を検討する', descriptionEn: 'Consider creating wills and ending notes for unforeseen circumstances',
+    recommendedTiming: '入籍後3ヶ月〜', recommendedTimingEn: '3+ months after registration',
+    monthsBefore: -5,
+    subtasks: [
+      { label: 'エンディングノートの内容を調査', labelEn: 'Research ending note contents' },
+      { label: 'ふたりで話し合い', labelEn: 'Discuss together' },
+      { label: '必要に応じて専門家に相談', labelEn: 'Consult experts if needed' },
+    ],
+    notes: ['若いうちに始めることで安心感が得られる', '定期的に更新することが重要'],
+    notesEn: ['Starting young provides peace of mind', 'Regular updates are important'],
+    budgetEstimateMin: 0, budgetEstimateMax: 50000,
+  },
+
+  // --- lifestyle_setup (phase_08) ---
+  {
+    taskId: 'new_030', categoryId: 'lifestyle_setup', phaseId: 'phase_08',
+    name: '定期的な家計レビューの習慣化', nameEn: 'Establish Regular Budget Review Habit',
+    description: '月に1回程度、ふたりで家計を見直す習慣を作る', descriptionEn: 'Create a habit of reviewing household finances together about once a month',
+    recommendedTiming: '入籍後1〜3ヶ月', recommendedTimingEn: '1-3 months after registration',
+    monthsBefore: -2,
+    subtasks: [
+      { label: '家計レビューの日を設定', labelEn: 'Set a budget review day' },
+      { label: '月の支出を振り返り', labelEn: 'Review monthly spending' },
+      { label: '翌月の予算を調整', labelEn: 'Adjust next month\'s budget' },
+    ],
+    notes: ['責め合うのではなく改善策を一緒に考える', '家計簿アプリを活用するとスムーズ'],
+    notesEn: ['Focus on finding improvements together, not blaming', 'Budget apps make this smoother'],
+    budgetEstimateMin: 0, budgetEstimateMax: 0,
+  },
+  {
+    taskId: 'new_031', categoryId: 'lifestyle_setup', phaseId: 'phase_08',
+    name: 'ふたりの記念日・イベント計画', nameEn: 'Plan Couple Anniversaries and Events',
+    description: '結婚記念日やふたりの特別な日の過ごし方を計画する', descriptionEn: 'Plan how to celebrate wedding anniversaries and other special days together',
+    recommendedTiming: '入籍後1〜3ヶ月', recommendedTimingEn: '1-3 months after registration',
+    monthsBefore: -2,
+    subtasks: [
+      { label: '記念日リストを作成', labelEn: 'Create anniversary list' },
+      { label: '毎年の過ごし方のアイデアを話し合う', labelEn: 'Discuss annual celebration ideas' },
+      { label: '特別な日のカレンダー登録', labelEn: 'Add special days to calendar' },
+    ],
+    notes: ['小さなお祝いでもお互いの気持ちが大切', '年に一度は特別なデートを'],
+    notesEn: ['Even small celebrations show you care', 'Plan at least one special date per year'],
+    budgetEstimateMin: 0, budgetEstimateMax: 50000,
   },
 ];
 

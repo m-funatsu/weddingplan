@@ -10,7 +10,7 @@ import {
   getUpcomingTasks,
   getCurrentPhase,
   formatCurrency,
-  getDaysUntilWedding,
+  getDaysUntilMarriage,
   formatDate,
 } from "@/lib/calculations";
 import { CATEGORY_INFO, PHASE_INFO } from "@/types";
@@ -32,15 +32,15 @@ export default function DashboardPage() {
     [tasks]
   );
   const currentPhase = useMemo(
-    () => getCurrentPhase(settings.weddingDate),
-    [settings.weddingDate]
+    () => getCurrentPhase(settings.marriageDate, settings.hasCeremony),
+    [settings.marriageDate, settings.hasCeremony]
   );
 
   const completedCount = tasks.filter((t) => t.status === "completed").length;
   const totalCount = tasks.filter((t) => t.status !== "skipped").length;
 
-  const daysUntil = settings.weddingDate
-    ? getDaysUntilWedding(settings.weddingDate)
+  const daysUntil = settings.marriageDate
+    ? getDaysUntilMarriage(settings.marriageDate)
     : null;
 
   if (!isLoaded) {
@@ -62,8 +62,8 @@ export default function DashboardPage() {
           {settings.partner1Name && settings.partner2Name && (
             <p className="text-sm text-gray-500 mt-1">
               {settings.partner1Name} & {settings.partner2Name}
-              {settings.weddingDate && (
-                <> · {formatDate(settings.weddingDate, settings.language)}</>
+              {settings.marriageDate && (
+                <> · {formatDate(settings.marriageDate, settings.language)}</>
               )}
             </p>
           )}
@@ -75,7 +75,7 @@ export default function DashboardPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-rose-100 text-sm font-medium">
-                  {isJa ? "挙式まであと" : "Days until wedding"}
+                  {isJa ? "入籍まであと" : "Days until marriage"}
                 </p>
                 <p className="text-4xl font-bold mt-1">
                   {daysUntil > 0 ? daysUntil : 0}

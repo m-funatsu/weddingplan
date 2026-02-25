@@ -33,7 +33,9 @@ export function useWeddingTasks() {
       loaded = initializeTasksFromTemplates(
         TASK_TEMPLATES,
         settings.language,
-        settings.weddingDate
+        settings.marriageDate,
+        settings.ceremonyDate,
+        settings.hasCeremony
       );
       saveTasks(loaded);
     }
@@ -86,7 +88,9 @@ export function useWeddingTasks() {
     const fresh = initializeTasksFromTemplates(
       TASK_TEMPLATES,
       settings.language,
-      settings.weddingDate
+      settings.marriageDate,
+      settings.ceremonyDate,
+      settings.hasCeremony
     );
     saveTasks(fresh);
     setTasks(fresh);

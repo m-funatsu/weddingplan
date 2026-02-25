@@ -26,17 +26,21 @@ export default function TimelineView({
           const info = PHASE_INFO[phaseId];
           const progress = calculatePhaseProgress(tasks, phaseId);
           const isCurrent = phaseId === currentPhase;
+          const isOptional = info.isOptional;
           const phaseTasks = tasks.filter((t) => t.phaseId === phaseId);
           const completedCount = phaseTasks.filter(
             (t) => t.status === "completed"
           ).length;
+          const allSkipped = phaseTasks.length > 0 && phaseTasks.every((t) => t.status === "skipped");
 
           return (
             <button
               key={phaseId}
               onClick={() => onPhaseClick?.(phaseId)}
               className={`w-full flex items-center gap-3 p-3 rounded-lg text-left transition-all ${
-                isCurrent
+                allSkipped
+                  ? "opacity-50 border border-dashed border-gray-200"
+                  : isCurrent
                   ? "bg-rose-50 border border-rose-200"
                   : "hover:bg-gray-50 border border-transparent"
               }`}
@@ -44,25 +48,36 @@ export default function TimelineView({
               {/* Phase number */}
               <div
                 className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${
-                  progress === 100
+                  allSkipped
+                    ? "bg-gray-100 text-gray-400"
+                    : progress === 100
                     ? "bg-green-100 text-green-700"
                     : isCurrent
                     ? "bg-rose-600 text-white"
+                    : isOptional
+                    ? "bg-purple-100 text-purple-600"
                     : "bg-gray-100 text-gray-500"
                 }`}
               >
-                {progress === 100 ? "✓" : index + 1}
+                {allSkipped ? "−" : progress === 100 ? "✓" : index + 1}
               </div>
 
               {/* Phase info */}
               <div className="flex-1 min-w-0">
-                <p
-                  className={`text-sm font-medium truncate ${
-                    isCurrent ? "text-rose-700" : "text-gray-900"
-                  }`}
-                >
-                  {language === "ja" ? info.label : info.labelEn}
-                </p>
+                <div className="flex items-center gap-1.5">
+                  <p
+                    className={`text-sm font-medium truncate ${
+                      allSkipped ? "text-gray-400" : isCurrent ? "text-rose-700" : "text-gray-900"
+                    }`}
+                  >
+                    {language === "ja" ? info.label : info.labelEn}
+                  </p>
+                  {isOptional && (
+                    <span className="text-[10px] text-purple-600 bg-purple-50 px-1 py-0.5 rounded shrink-0">
+                      {language === "ja" ? "任意" : "Optional"}
+                    </span>
+                  )}
+                </div>
                 <p className="text-xs text-gray-400">
                   {language === "ja" ? info.monthRange : info.monthRangeEn}
                 </p>
@@ -71,16 +86,20 @@ export default function TimelineView({
               {/* Progress */}
               <div className="text-right shrink-0">
                 <p className="text-xs font-medium text-gray-600">
-                  {completedCount}/{phaseTasks.length}
+                  {allSkipped
+                    ? language === "ja" ? "スキップ" : "Skipped"
+                    : `${completedCount}/${phaseTasks.length}`}
                 </p>
-                <div className="w-16 h-1.5 bg-gray-100 rounded-full mt-1 overflow-hidden">
-                  <div
-                    className={`h-full rounded-full transition-all duration-500 ${
-                      progress === 100 ? "bg-green-500" : "bg-rose-500"
-                    }`}
-                    style={{ width: `${progress}%` }}
-                  />
-                </div>
+                {!allSkipped && (
+                  <div className="w-16 h-1.5 bg-gray-100 rounded-full mt-1 overflow-hidden">
+                    <div
+                      className={`h-full rounded-full transition-all duration-500 ${
+                        progress === 100 ? "bg-green-500" : "bg-rose-500"
+                      }`}
+                      style={{ width: `${progress}%` }}
+                    />
+                  </div>
+                )}
               </div>
             </button>
           );

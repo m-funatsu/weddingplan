@@ -7,15 +7,19 @@ import { WeddingTask, TaskTemplate } from "@/types/index";
 export function generateDefaultTasks(
   templates: TaskTemplate[],
   language: "ja" | "en",
-  weddingDate?: string | null
+  marriageDate?: string | null,
+  ceremonyDate?: string | null,
+  hasCeremony: boolean = true
 ): WeddingTask[] {
   const now = new Date().toISOString();
 
   return templates.map((t) => {
     let calculatedDeadline: string | null = null;
-    if (weddingDate && t.monthsBefore > 0) {
-      const wedding = new Date(weddingDate);
-      const deadline = new Date(wedding);
+    const isCeremonyTask = t.categoryId === "ceremony";
+    const anchorDate = isCeremonyTask ? (ceremonyDate ?? marriageDate) : marriageDate;
+    if (anchorDate && t.monthsBefore > 0) {
+      const anchor = new Date(anchorDate);
+      const deadline = new Date(anchor);
       deadline.setMonth(deadline.getMonth() - t.monthsBefore);
       calculatedDeadline = deadline.toISOString().split("T")[0];
     }

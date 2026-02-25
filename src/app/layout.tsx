@@ -14,10 +14,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Wedding Roadmap - 結婚をプロジェクトとしてスマートに管理",
+  title: "Wedding Roadmap - 交際から入籍・新生活までの結婚ロードマップ",
   description:
-    "結婚プロジェクトの全タスクを一元管理。100以上のプリセットタスク、予算追跡、タイムライン管理、婚前契約チェックリストで、理想の結婚を実現。",
-  keywords: ["結婚式", "ウェディング", "準備", "タスク管理", "予算", "wedding", "planning", "結婚プロジェクト", "roadmap"],
+    "交際中の価値観すり合わせから入籍・新生活まで、結婚の道のり全体を管理。140以上のタスク、9フェーズのマイルストーン管理、予算追跡で二人の未来を計画的に。",
+  keywords: ["結婚", "入籍", "ロードマップ", "マイルストーン", "タスク管理", "予算", "wedding", "marriage", "roadmap", "結婚準備"],
 };
 
 export default function RootLayout({

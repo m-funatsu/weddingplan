@@ -3,15 +3,15 @@ export type TaskStatus = 'pending' | 'in_progress' | 'completed' | 'skipped';
 
 // --- Category ---
 export type CategoryId =
-  | 'pre_marriage'
-  | 'venue_planning'
-  | 'guests'
-  | 'attire_beauty'
-  | 'ceremony_day'
-  | 'photo_video'
-  | 'legal'
-  | 'new_life'
-  | 'post_wedding';
+  | 'values_alignment'
+  | 'engagement'
+  | 'family_relations'
+  | 'finance_planning'
+  | 'ceremony'
+  | 'legal_procedures'
+  | 'housing'
+  | 'lifestyle_setup'
+  | 'life_planning';
 
 // --- Phase ---
 export type PhaseId =
@@ -23,8 +23,7 @@ export type PhaseId =
   | 'phase_06'
   | 'phase_07'
   | 'phase_08'
-  | 'phase_09'
-  | 'phase_10';
+  | 'phase_09';
 
 // --- SubTask ---
 export interface SubTask {
@@ -79,7 +78,9 @@ export interface PrenupItem {
 
 // --- Settings ---
 export interface WeddingSettings {
-  weddingDate: string | null;
+  marriageDate: string | null;
+  ceremonyDate: string | null;
+  hasCeremony: boolean;
   partner1Name: string;
   partner2Name: string;
   language: 'ja' | 'en';
@@ -118,28 +119,27 @@ export interface PrenupTemplate {
 // --- Constants ---
 
 export const CATEGORY_INFO: Record<CategoryId, { icon: string; label: string; labelEn: string; color: string }> = {
-  pre_marriage: { icon: '💍', label: '婚前の準備', labelEn: 'Pre-Marriage Prep', color: '#e11d48' },
-  venue_planning: { icon: '🏰', label: '式場・プランニング', labelEn: 'Venue & Planning', color: '#7c3aed' },
-  guests: { icon: '👥', label: 'ゲスト関連', labelEn: 'Guest Management', color: '#2563eb' },
-  attire_beauty: { icon: '👗', label: '衣装・美容', labelEn: 'Attire & Beauty', color: '#ec4899' },
-  ceremony_day: { icon: '🎊', label: '式当日の準備', labelEn: 'Ceremony Day', color: '#ea580c' },
-  photo_video: { icon: '📸', label: '写真・映像', labelEn: 'Photo & Video', color: '#d97706' },
-  legal: { icon: '📋', label: '法的手続き', labelEn: 'Legal Procedures', color: '#0891b2' },
-  new_life: { icon: '🏠', label: '新生活準備', labelEn: 'New Life Prep', color: '#16a34a' },
-  post_wedding: { icon: '✨', label: '結婚式後', labelEn: 'Post-Wedding', color: '#0d9488' },
+  values_alignment: { icon: '💑', label: '価値観すり合わせ', labelEn: 'Values & Communication', color: '#8b5cf6' },
+  engagement: { icon: '💍', label: 'プロポーズ・婚約', labelEn: 'Proposal & Engagement', color: '#e11d48' },
+  family_relations: { icon: '👨‍👩‍👧', label: '両家・親族対応', labelEn: 'Family Relations', color: '#ea580c' },
+  finance_planning: { icon: '💰', label: '資金計画・家計', labelEn: 'Financial Planning', color: '#16a34a' },
+  ceremony: { icon: '🎊', label: '結婚式', labelEn: 'Wedding Ceremony', color: '#7c3aed' },
+  legal_procedures: { icon: '📋', label: '入籍・法的手続き', labelEn: 'Legal & Registration', color: '#0891b2' },
+  housing: { icon: '🏠', label: '住まい・引越し', labelEn: 'Housing & Moving', color: '#2563eb' },
+  lifestyle_setup: { icon: '🛋️', label: '新生活の立ち上げ', labelEn: 'New Life Setup', color: '#d97706' },
+  life_planning: { icon: '🎯', label: 'ライフプラン', labelEn: 'Life Planning', color: '#0d9488' },
 };
 
-export const PHASE_INFO: Record<PhaseId, { label: string; labelEn: string; monthRange: string; monthRangeEn: string }> = {
-  phase_01: { label: '婚約・婚前準備期', labelEn: 'Engagement & Pre-Wedding', monthRange: '12ヶ月以上前', monthRangeEn: '12+ months before' },
-  phase_02: { label: '情報収集・方向性決定期', labelEn: 'Research & Direction', monthRange: '12〜10ヶ月前', monthRangeEn: '12-10 months before' },
-  phase_03: { label: '式場決定・基本計画期', labelEn: 'Venue & Basic Planning', monthRange: '10〜8ヶ月前', monthRangeEn: '10-8 months before' },
-  phase_04: { label: '詳細計画・手配開始期', labelEn: 'Detailed Planning', monthRange: '8〜6ヶ月前', monthRangeEn: '8-6 months before' },
-  phase_05: { label: '本格準備期', labelEn: 'Full Preparation', monthRange: '6〜4ヶ月前', monthRangeEn: '6-4 months before' },
-  phase_06: { label: '詰め作業期', labelEn: 'Finalization', monthRange: '4〜2ヶ月前', monthRangeEn: '4-2 months before' },
-  phase_07: { label: '最終確認期', labelEn: 'Final Confirmation', monthRange: '2〜1ヶ月前', monthRangeEn: '2-1 months before' },
-  phase_08: { label: '直前準備期', labelEn: 'Last-Minute Prep', monthRange: '1ヶ月前〜前日', monthRangeEn: '1 month - day before' },
-  phase_09: { label: '挙式当日', labelEn: 'Wedding Day', monthRange: '当日', monthRangeEn: 'Day of' },
-  phase_10: { label: '挙式後手続き期', labelEn: 'Post-Wedding', monthRange: '挙式後', monthRangeEn: 'After wedding' },
+export const PHASE_INFO: Record<PhaseId, { label: string; labelEn: string; monthRange: string; monthRangeEn: string; isOptional?: boolean }> = {
+  phase_01: { label: '交際・価値観すり合わせ期', labelEn: 'Dating & Values Alignment', monthRange: '18ヶ月以上前', monthRangeEn: '18+ months before' },
+  phase_02: { label: 'プロポーズ・婚約期', labelEn: 'Proposal & Engagement', monthRange: '18〜12ヶ月前', monthRangeEn: '18-12 months before' },
+  phase_03: { label: '両家対応・方向性決定期', labelEn: 'Families & Direction', monthRange: '12〜9ヶ月前', monthRangeEn: '12-9 months before' },
+  phase_04: { label: '資金計画・新居準備期', labelEn: 'Finances & New Home', monthRange: '9〜6ヶ月前', monthRangeEn: '9-6 months before' },
+  phase_05: { label: '結婚式準備期', labelEn: 'Wedding Ceremony Prep', monthRange: '6〜2ヶ月前', monthRangeEn: '6-2 months before', isOptional: true },
+  phase_06: { label: '入籍・法的手続き期', labelEn: 'Registration & Legal', monthRange: '2ヶ月前〜当月', monthRangeEn: '2 months - month of' },
+  phase_07: { label: '新居引越し・生活立ち上げ期', labelEn: 'Moving & Setup', monthRange: '入籍前後', monthRangeEn: 'Around registration' },
+  phase_08: { label: '新生活安定期', labelEn: 'New Life Stabilization', monthRange: '入籍後1〜3ヶ月', monthRangeEn: '1-3 months after' },
+  phase_09: { label: 'ライフプラン確立期', labelEn: 'Life Plan Establishment', monthRange: '入籍後3ヶ月〜', monthRangeEn: '3+ months after' },
 };
 
 export const PRENUP_SECTION_INFO: Record<PrenupSectionId, { label: string; labelEn: string; icon: string }> = {
@@ -156,7 +156,9 @@ export const PRENUP_SECTION_INFO: Record<PrenupSectionId, { label: string; label
 };
 
 export const DEFAULT_SETTINGS: WeddingSettings = {
-  weddingDate: null,
+  marriageDate: null,
+  ceremonyDate: null,
+  hasCeremony: true,
   partner1Name: '',
   partner2Name: '',
   language: 'ja',
@@ -164,11 +166,11 @@ export const DEFAULT_SETTINGS: WeddingSettings = {
 };
 
 export const ALL_CATEGORY_IDS: CategoryId[] = [
-  'pre_marriage', 'venue_planning', 'guests', 'attire_beauty',
-  'ceremony_day', 'photo_video', 'legal', 'new_life', 'post_wedding',
+  'values_alignment', 'engagement', 'family_relations', 'finance_planning',
+  'ceremony', 'legal_procedures', 'housing', 'lifestyle_setup', 'life_planning',
 ];
 
 export const ALL_PHASE_IDS: PhaseId[] = [
   'phase_01', 'phase_02', 'phase_03', 'phase_04', 'phase_05',
-  'phase_06', 'phase_07', 'phase_08', 'phase_09', 'phase_10',
+  'phase_06', 'phase_07', 'phase_08', 'phase_09',
 ];

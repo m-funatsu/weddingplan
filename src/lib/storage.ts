@@ -8,9 +8,14 @@ import {
 } from "@/types/index";
 import { supabase, isSupabaseConfigured } from "./supabase";
 
-const TASKS_KEY = "weddingroadmap_v1_tasks";
-const PRENUP_KEY = "weddingroadmap_v1_prenup";
-const SETTINGS_KEY = "weddingroadmap_v1_settings";
+const TASKS_KEY = "weddingroadmap_v2_tasks";
+const PRENUP_KEY = "weddingroadmap_v2_prenup";
+const SETTINGS_KEY = "weddingroadmap_v2_settings";
+
+// Legacy keys for migration
+const LEGACY_TASKS_KEY = "weddingroadmap_v1_tasks";
+const LEGACY_SETTINGS_KEY = "weddingroadmap_v1_settings";
+const LEGACY_PRENUP_KEY = "weddingroadmap_v1_prenup";
 
 let tasksCache: WeddingTask[] | null = null;
 let prenupCache: PrenupItem[] | null = null;
@@ -152,14 +157,16 @@ async function supabaseUpsertPrenupItem(
 async function supabaseGetSettings(userId: string): Promise<WeddingSettings> {
   const { data, error } = await supabase
     .from("weddingroadmap_profiles")
-    .select("wedding_date, partner1_name, partner2_name, language, total_budget")
+    .select("wedding_date, marriage_date, ceremony_date, has_ceremony, partner1_name, partner2_name, language, total_budget")
     .eq("user_id", userId)
     .single();
 
   if (error || !data) return DEFAULT_SETTINGS;
 
   return {
-    weddingDate: data.wedding_date ?? DEFAULT_SETTINGS.weddingDate,
+    marriageDate: data.marriage_date ?? data.wedding_date ?? DEFAULT_SETTINGS.marriageDate,
+    ceremonyDate: data.ceremony_date ?? data.wedding_date ?? DEFAULT_SETTINGS.ceremonyDate,
+    hasCeremony: data.has_ceremony ?? DEFAULT_SETTINGS.hasCeremony,
     partner1Name: data.partner1_name ?? DEFAULT_SETTINGS.partner1Name,
     partner2Name: data.partner2_name ?? DEFAULT_SETTINGS.partner2Name,
     language: data.language ?? DEFAULT_SETTINGS.language,
@@ -174,7 +181,9 @@ async function supabaseSaveSettings(
   await supabase.from("weddingroadmap_profiles").upsert(
     {
       user_id: userId,
-      wedding_date: settings.weddingDate,
+      marriage_date: settings.marriageDate,
+      ceremony_date: settings.ceremonyDate,
+      has_ceremony: settings.hasCeremony,
       partner1_name: settings.partner1Name,
       partner2_name: settings.partner2Name,
       language: settings.language,
@@ -189,15 +198,24 @@ async function supabaseSaveSettings(
 export function initializeTasksFromTemplates(
   templates: TaskTemplate[],
   language: "ja" | "en",
-  weddingDate?: string | null
+  marriageDate?: string | null,
+  ceremonyDate?: string | null,
+  hasCeremony?: boolean
 ): WeddingTask[] {
   const now = new Date().toISOString();
 
   return templates.map((t) => {
+    // Skip ceremony tasks if no ceremony planned
+    const isCeremonyTask = t.categoryId === "ceremony";
+    const skipTask = isCeremonyTask && hasCeremony === false;
+
+    // Ceremony tasks use ceremonyDate; others use marriageDate
+    const anchorDate = isCeremonyTask ? (ceremonyDate || marriageDate) : marriageDate;
+
     let calculatedDeadline: string | null = null;
-    if (weddingDate && t.monthsBefore > 0) {
-      const wedding = new Date(weddingDate);
-      const deadline = new Date(wedding);
+    if (anchorDate && t.monthsBefore !== 0) {
+      const anchor = new Date(anchorDate);
+      const deadline = new Date(anchor);
       deadline.setMonth(deadline.getMonth() - t.monthsBefore);
       calculatedDeadline = deadline.toISOString().split("T")[0];
     }
@@ -209,7 +227,7 @@ export function initializeTasksFromTemplates(
       phaseId: t.phaseId,
       name: language === "ja" ? t.name : t.nameEn,
       description: language === "ja" ? t.description : t.descriptionEn,
-      status: "pending" as const,
+      status: skipTask ? ("skipped" as const) : ("pending" as const),
       recommendedTiming: language === "ja" ? t.recommendedTiming : t.recommendedTimingEn,
       monthsBefore: t.monthsBefore,
       calculatedDeadline,
@@ -335,9 +353,29 @@ export function deletePrenupItem(id: string): boolean {
 export function getSettings(): WeddingSettings {
   if (!isBrowser()) return DEFAULT_SETTINGS;
   try {
+    // Try v2 first
     const raw = localStorage.getItem(SETTINGS_KEY);
-    if (!raw) return DEFAULT_SETTINGS;
-    return { ...DEFAULT_SETTINGS, ...JSON.parse(raw) };
+    if (raw) return { ...DEFAULT_SETTINGS, ...JSON.parse(raw) };
+
+    // Migrate from v1 if exists
+    const legacyRaw = localStorage.getItem(LEGACY_SETTINGS_KEY);
+    if (legacyRaw) {
+      const legacy = JSON.parse(legacyRaw);
+      const migrated: WeddingSettings = {
+        ...DEFAULT_SETTINGS,
+        marriageDate: legacy.weddingDate ?? null,
+        ceremonyDate: legacy.weddingDate ?? null,
+        hasCeremony: true,
+        partner1Name: legacy.partner1Name ?? "",
+        partner2Name: legacy.partner2Name ?? "",
+        language: legacy.language ?? "ja",
+        totalBudget: legacy.totalBudget ?? 3500000,
+      };
+      saveSettings(migrated);
+      return migrated;
+    }
+
+    return DEFAULT_SETTINGS;
   } catch {
     return DEFAULT_SETTINGS;
   }
@@ -463,7 +501,9 @@ export async function syncLocalToSupabase(): Promise<void> {
 
   const localSettings = getSettings();
   const settingsChanged =
-    localSettings.weddingDate !== DEFAULT_SETTINGS.weddingDate ||
+    localSettings.marriageDate !== DEFAULT_SETTINGS.marriageDate ||
+    localSettings.ceremonyDate !== DEFAULT_SETTINGS.ceremonyDate ||
+    localSettings.hasCeremony !== DEFAULT_SETTINGS.hasCeremony ||
     localSettings.partner1Name !== DEFAULT_SETTINGS.partner1Name ||
     localSettings.partner2Name !== DEFAULT_SETTINGS.partner2Name ||
     localSettings.language !== DEFAULT_SETTINGS.language ||

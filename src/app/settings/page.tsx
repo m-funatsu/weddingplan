@@ -21,9 +21,9 @@ export default function SettingsPage() {
 
   function handleExport() {
     const data = {
-      tasks: localStorage.getItem("weddingroadmap_v1_tasks"),
-      prenup: localStorage.getItem("weddingroadmap_v1_prenup"),
-      settings: localStorage.getItem("weddingroadmap_v1_settings"),
+      tasks: localStorage.getItem("weddingroadmap_v2_tasks"),
+      prenup: localStorage.getItem("weddingroadmap_v2_prenup"),
+      settings: localStorage.getItem("weddingroadmap_v2_settings"),
       exportedAt: new Date().toISOString(),
     };
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
@@ -46,9 +46,9 @@ export default function SettingsPage() {
       reader.onload = (ev) => {
         try {
           const data = JSON.parse(ev.target?.result as string);
-          if (data.tasks) localStorage.setItem("weddingroadmap_v1_tasks", data.tasks);
-          if (data.prenup) localStorage.setItem("weddingroadmap_v1_prenup", data.prenup);
-          if (data.settings) localStorage.setItem("weddingroadmap_v1_settings", data.settings);
+          if (data.tasks) localStorage.setItem("weddingroadmap_v2_tasks", data.tasks);
+          if (data.prenup) localStorage.setItem("weddingroadmap_v2_prenup", data.prenup);
+          if (data.settings) localStorage.setItem("weddingroadmap_v2_settings", data.settings);
           window.location.reload();
         } catch {
           alert(isJa ? "ファイルの読み込みに失敗しました" : "Failed to import file");
@@ -74,31 +74,82 @@ export default function SettingsPage() {
           {isJa ? "設定" : "Settings"}
         </h1>
 
-        {/* Wedding date */}
+        {/* Dates & ceremony */}
         <section className="bg-white rounded-xl border border-gray-200 p-5 space-y-4">
           <h2 className="text-base font-bold text-gray-900">
             {isJa ? "基本情報" : "Basic Info"}
           </h2>
 
           <div>
-            <label htmlFor="wedding-date" className="block text-sm font-medium text-gray-700 mb-1">
-              {isJa ? "挙式日" : "Wedding Date"}
+            <label htmlFor="marriage-date" className="block text-sm font-medium text-gray-700 mb-1">
+              {isJa ? "入籍予定日" : "Marriage Registration Date"}
             </label>
             <input
-              id="wedding-date"
+              id="marriage-date"
               type="date"
-              value={settings.weddingDate ?? ""}
+              value={settings.marriageDate ?? ""}
               onChange={(e) =>
-                updateSettings({ weddingDate: e.target.value || null })
+                updateSettings({ marriageDate: e.target.value || null })
               }
               className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-rose-500"
             />
             <p className="text-xs text-gray-400 mt-1">
               {isJa
-                ? "挙式日を設定すると、各タスクの推奨期限が自動計算されます"
-                : "Setting a wedding date enables automatic deadline calculation"}
+                ? "入籍予定日を設定すると、各タスクの推奨期限が自動計算されます"
+                : "Setting a marriage date enables automatic deadline calculation"}
             </p>
           </div>
+
+          {/* Ceremony toggle */}
+          <div className="flex items-center justify-between py-2">
+            <div>
+              <p className="text-sm font-medium text-gray-700">
+                {isJa ? "結婚式を行う予定" : "Planning a wedding ceremony"}
+              </p>
+              <p className="text-xs text-gray-400 mt-0.5">
+                {isJa
+                  ? "オフにすると結婚式関連のタスクがスキップされます"
+                  : "Turning this off will skip ceremony-related tasks"}
+              </p>
+            </div>
+            <button
+              role="switch"
+              aria-checked={settings.hasCeremony}
+              onClick={() => updateSettings({ hasCeremony: !settings.hasCeremony })}
+              className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ${
+                settings.hasCeremony ? "bg-rose-600" : "bg-gray-200"
+              }`}
+            >
+              <span
+                className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ${
+                  settings.hasCeremony ? "translate-x-5" : "translate-x-0"
+                }`}
+              />
+            </button>
+          </div>
+
+          {/* Ceremony date (shown only when hasCeremony) */}
+          {settings.hasCeremony && (
+            <div>
+              <label htmlFor="ceremony-date" className="block text-sm font-medium text-gray-700 mb-1">
+                {isJa ? "挙式日" : "Ceremony Date"}
+              </label>
+              <input
+                id="ceremony-date"
+                type="date"
+                value={settings.ceremonyDate ?? ""}
+                onChange={(e) =>
+                  updateSettings({ ceremonyDate: e.target.value || null })
+                }
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-rose-500"
+              />
+              <p className="text-xs text-gray-400 mt-1">
+                {isJa
+                  ? "結婚式関連タスクの期限は挙式日から逆算されます"
+                  : "Ceremony task deadlines are calculated from this date"}
+              </p>
+            </div>
+          )}
 
           <div className="grid grid-cols-2 gap-4">
             <div>
