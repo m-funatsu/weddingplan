@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import Navigation from "./Navigation";
 import AuthGuard from "./AuthGuard";
+import FeedbackWidget from "./FeedbackWidget";
 
 export default function AppAuthWrapper({
   children,
@@ -21,6 +22,7 @@ export default function AppAuthWrapper({
     <AuthGuard>
       <Navigation />
       {children}
+      <FeedbackWidget />
     </AuthGuard>
   );
 }
