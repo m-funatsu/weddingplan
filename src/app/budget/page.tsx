@@ -1,13 +1,28 @@
 "use client";
 
+import { useMemo } from "react";
 import { useWeddingTasks, useWeddingSettings } from "@/lib/hooks";
 import BudgetChart from "@/components/BudgetChart";
 import PremiumGate from "@/components/PremiumGate";
+import { ExportButton } from "@/components/shared/ExportButton";
+import { CATEGORY_INFO, type CategoryId } from "@/types";
+import { getBudgetBreakdown } from "@/lib/calculations";
 
 export default function BudgetPage() {
   const { tasks, isLoaded } = useWeddingTasks();
   const { settings } = useWeddingSettings();
   const isJa = settings.language === "ja";
+
+  const budgetExportData = useMemo(() => {
+    if (!tasks.length) return [];
+    const breakdown = getBudgetBreakdown(tasks);
+    return breakdown.map((b) => ({
+      category: b.label,
+      estimated_cost: b.estimateAvg,
+      actual_cost: b.actual,
+      difference: b.actual - b.estimateAvg,
+    }));
+  }, [tasks]);
 
   if (!isLoaded) {
     return (
@@ -21,15 +36,27 @@ export default function BudgetPage() {
     <PremiumGate featureName="予算管理">
       <div className="page-with-nav min-h-screen bg-gradient-to-b from-rose-50/50 to-white">
         <div className="max-w-4xl mx-auto px-4 py-6 sm:py-8 space-y-5">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900">
-              {isJa ? "予算管理" : "Budget Management"}
-            </h1>
-            <p className="text-sm text-gray-500 mt-0.5">
-              {isJa
-                ? "見積と実費を比較して、予算を管理しましょう"
-                : "Compare estimates with actual costs to manage your budget"}
-            </p>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900">
+                {isJa ? "予算管理" : "Budget Management"}
+              </h1>
+              <p className="text-sm text-gray-500 mt-0.5">
+                {isJa
+                  ? "見積と実費を比較して、予算を管理しましょう"
+                  : "Compare estimates with actual costs to manage your budget"}
+              </p>
+            </div>
+            <ExportButton
+              data={budgetExportData}
+              columns={[
+                { key: "category", label: "カテゴリ" },
+                { key: "estimated_cost", label: "見積額", format: (v: number) => `¥${v.toLocaleString()}` },
+                { key: "actual_cost", label: "実費", format: (v: number) => `¥${v.toLocaleString()}` },
+                { key: "difference", label: "差額", format: (v: number) => `¥${v.toLocaleString()}` },
+              ]}
+              filename="weddingplan_budget"
+            />
           </div>
 
           <BudgetChart

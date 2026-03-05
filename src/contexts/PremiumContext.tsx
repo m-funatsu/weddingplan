@@ -58,7 +58,8 @@ export function PremiumProvider({ children }: { children: React.ReactNode }) {
   const upgrade = useCallback(async () => {
     if (!user) return;
     try {
-      const { url } = await createCheckoutSession(user.id);
+      const { data: { session } } = await supabase.auth.getSession();
+      const { url } = await createCheckoutSession(session?.access_token || '');
       if (url) {
         window.location.href = url;
       } else {

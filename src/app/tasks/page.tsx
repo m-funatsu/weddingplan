@@ -5,6 +5,8 @@ import { useWeddingTasks, useWeddingSettings } from "@/lib/hooks";
 import type { CategoryId, PhaseId, TaskStatus } from "@/types";
 import TaskCard from "@/components/TaskCard";
 import TaskFilters from "@/components/TaskFilters";
+import { ExportButton } from "@/components/shared/ExportButton";
+import { CATEGORY_INFO, PHASE_INFO } from "@/types";
 
 export default function TasksPage() {
   const { tasks, isLoaded, updateTask, updateSubtask } = useWeddingTasks();
@@ -84,10 +86,34 @@ export default function TasksPage() {
               {completedCount}/{totalActive} {isJa ? "タスク完了" : "tasks completed"}
             </p>
           </div>
-          <div className="text-right">
-            <p className="text-2xl font-bold text-rose-600">
-              {totalActive > 0 ? Math.round((completedCount / totalActive) * 100) : 0}%
-            </p>
+          <div className="flex items-center gap-3">
+            <ExportButton
+              data={filteredTasks.map((t) => {
+                const statusLabels: Record<string, string> = { pending: '未着手', in_progress: '進行中', completed: '完了', skipped: 'スキップ' };
+                return {
+                  phase: PHASE_INFO[t.phaseId]?.label ?? t.phaseId,
+                  task_title: t.name,
+                  status: statusLabels[t.status] ?? t.status,
+                  deadline: t.calculatedDeadline ?? '',
+                  category: CATEGORY_INFO[t.categoryId]?.label ?? t.categoryId,
+                  notes: t.memo,
+                };
+              })}
+              columns={[
+                { key: 'phase', label: 'フェーズ' },
+                { key: 'task_title', label: 'タスク名' },
+                { key: 'status', label: 'ステータス' },
+                { key: 'deadline', label: '期限' },
+                { key: 'category', label: 'カテゴリ' },
+                { key: 'notes', label: 'メモ' },
+              ]}
+              filename="weddingplan_tasks"
+            />
+            <div className="text-right">
+              <p className="text-2xl font-bold text-rose-600">
+                {totalActive > 0 ? Math.round((completedCount / totalActive) * 100) : 0}%
+              </p>
+            </div>
           </div>
         </div>
 

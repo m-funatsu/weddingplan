@@ -9,8 +9,13 @@ export async function POST(req: NextRequest) {
     const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-    if (!stripeSecretKey || !webhookSecret || !signature) {
-      return NextResponse.json({ received: true, configured: false });
+    if (!stripeSecretKey || !webhookSecret) {
+      console.error('Stripe webhook is not configured: missing STRIPE_SECRET_KEY or STRIPE_WEBHOOK_SECRET');
+      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
+    }
+
+    if (!signature) {
+      return NextResponse.json({ error: 'Missing stripe-signature header' }, { status: 400 });
     }
 
     const stripe = new Stripe(stripeSecretKey);
@@ -36,6 +41,9 @@ export async function POST(req: NextRequest) {
               premium_activated_at: new Date().toISOString(),
             })
             .eq('user_id', userId);
+        } else {
+          console.error('Supabase admin is not configured');
+          return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
         }
       }
     }

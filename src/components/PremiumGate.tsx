@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { usePremium } from "@/contexts/PremiumContext";
 import { PRICE_PREMIUM } from "@/lib/stripe";
+import { Paywall } from "@/components/shared/Paywall";
 
 interface PremiumGateProps {
   children: React.ReactNode;
@@ -10,6 +12,7 @@ interface PremiumGateProps {
 
 export default function PremiumGate({ children, featureName }: PremiumGateProps) {
   const { isPremium, isLoading, upgrade } = usePremium();
+  const [showPaywall, setShowPaywall] = useState(false);
 
   if (isLoading) {
     return (
@@ -46,11 +49,11 @@ export default function PremiumGate({ children, featureName }: PremiumGateProps)
             この機能はPremiumプランで利用できます
           </p>
           <div className="mb-4">
-            <span className="text-3xl font-bold text-gray-900">¥{PRICE_PREMIUM.toLocaleString()}</span>
+            <span className="text-3xl font-bold text-gray-900">&yen;{PRICE_PREMIUM.toLocaleString()}</span>
             <span className="text-sm text-gray-500 ml-1">買い切り</span>
           </div>
           <button
-            onClick={upgrade}
+            onClick={() => setShowPaywall(true)}
             autoFocus
             className="w-full py-3 bg-rose-600 text-white font-semibold rounded-xl hover:bg-rose-700 transition-all shadow-lg shadow-rose-600/25"
           >
@@ -61,6 +64,18 @@ export default function PremiumGate({ children, featureName }: PremiumGateProps)
           </p>
         </div>
       </div>
+
+      <Paywall
+        isOpen={showPaywall}
+        onClose={() => setShowPaywall(false)}
+        featureTitle="予算管理 & プレナップチェック"
+        featureDescription="結婚式の予算をカテゴリ別に管理し、プレナップチェックリストで大切な話し合いを進めましょう。"
+        priceLabel="¥980（買い切り）"
+        onUpgrade={() => {
+          setShowPaywall(false);
+          upgrade();
+        }}
+      />
     </div>
   );
 }
