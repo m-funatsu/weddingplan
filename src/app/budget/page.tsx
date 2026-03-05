@@ -51,9 +51,9 @@ export default function BudgetPage() {
               data={budgetExportData}
               columns={[
                 { key: "category", label: "カテゴリ" },
-                { key: "estimated_cost", label: "見積額", format: (v: number) => `¥${v.toLocaleString()}` },
-                { key: "actual_cost", label: "実費", format: (v: number) => `¥${v.toLocaleString()}` },
-                { key: "difference", label: "差額", format: (v: number) => `¥${v.toLocaleString()}` },
+                { key: "estimated_cost", label: "見積額", format: (v: unknown) => `¥${Number(v).toLocaleString()}` },
+                { key: "actual_cost", label: "実費", format: (v: unknown) => `¥${Number(v).toLocaleString()}` },
+                { key: "difference", label: "差額", format: (v: unknown) => `¥${Number(v).toLocaleString()}` },
               ]}
               filename="weddingplan_budget"
             />
