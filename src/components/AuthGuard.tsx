@@ -44,13 +44,17 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    getUser().then((u) => {
+    const timeout = new Promise<null>((resolve) => setTimeout(() => resolve(null), 5000));
+    Promise.race([getUser(), timeout]).then((u) => {
       if (u) {
         setUser(u);
         localStorage.removeItem(GUEST_MODE_KEY);
       } else if (storedGuest === "true") {
         setIsGuest(true);
       }
+      setIsLoading(false);
+    }).catch(() => {
+      setIsGuest(true);
       setIsLoading(false);
     });
 
